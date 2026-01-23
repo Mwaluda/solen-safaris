@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lemosho Route - Solen Safaris</title>
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/route-detail-style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/navbar.css">
+    <style>
+
+/* =========================
+   NAVBAR BASE
+========================= */
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 24px 5vw;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(6px);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 68px;
+    width: auto;
+}
+
+/* =========================
+   DESKTOP MENU
+========================= */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 36px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.05rem;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+.contact-btn {
+    background: var(--primary);
+    color: white !important;
+    padding: 10px 26px;
+    border-radius: 8px;
+}
+
+/* =========================
+   HAMBURGER
+========================= */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 28px;
+    height: 3px;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* =========================
+   DROPDOWNS (DESKTOP)
+========================= */
+
+
+/* =========================
+   MOBILE MENU
+========================= */
+@media (max-width: 992px) {
+
+    /* Show hamburger */
+    .hamburger {
+        display: flex;
+        z-index: 1001;
+    }
+
+    /* Mobile nav container */
+    .nav-links {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 70%;
+        max-width: 350px;
+        height: 100vh;
+        background: rgba(0,0,0,0.95);
+        flex-direction: column;
+        align-items: stretch;
+        padding: 80px 0 30px;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        overflow-y: auto;
+        border-radius: 0 20px 20px 0;
+        z-index: 1000;
+    }
+
+    /* Open state */
+    .nav-links.active {
+        display: flex;
+        transform: translateX(0);
+    }
+
+    .nav-links li {
+        width: 100%;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .nav-links > li > a {
+        display: block;
+        padding: 18px 30px;
+        font-size: 1.1rem;
+        color: white !important;
+    }
+
+    .contact-btn {
+        margin: 20px 30px;
+        text-align: center;
+        border-radius: 50px;
+        padding: 14px 30px;
+    }
+
+    /* Close button (X) */
+    .nav-links::before {
+        content: '×';
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 2.5rem;
+        color: white;
+        cursor: pointer;
+    }
+
+    /* =========================
+       MOBILE DROPDOWNS
+    ========================= */
+    .dropdown-menu {
+        position: static;
+        background: rgba(255,255,255,0.05);
+        max-height: 0;
+        overflow: hidden;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        padding: 0;
+        transition: max-height 0.35s ease;
+    }
+
+    .dropdown.active .dropdown-menu {
+        max-height: 500px;
+        padding: 6px 0;
+    }
+
+    .dropdown-menu a {
+        padding: 14px 30px 14px 50px;
+        font-size: 0.95rem;
+        color: rgba(255,255,255,0.85) !important;
+    }
+}
+
+    .footer-social a {
+    display: inline-flex;
+    margin: 0 10px;
+    font-size: 26px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.footer-social a:hover {
+    transform: scale(1.2);
+    opacity: 0.85;
+}
+
+/* Brand colors */
+.bi-instagram { color: #E4405F; }
+.bi-facebook  { color: #1877F2; }
+.bi-whatsapp  { color: #25D366; }
+.bi-youtube   { color: #FF0000; }
+.bi-envelope-fill { color: #EA4335; }
+.bi-twitter-x { color: #000000; }
+
+ </style>
+</head>
+<body>
+    <!-- Fixed Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Solen Safaris">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Hem</a></li>
+                <li class="dropdown">
+                    <a href="kilimanjaro.html">Mount Kilimanjaro</a>
+                    <div class="dropdown-menu">
+                        <a href="kilimanjaro.html">Om Mount Kilimanjaro</a>
+                        <a href="machame-route.html">Machame Rutt</a>
+                        <a href="marangu-route.html">Marangu Rutt</a>
+                        <a href="lemosho-route.html">Lemosho Rutt</a>
+                        <a href="umbwe-route.html">Umbwe Rutt</a>
+                        <a href="rongai-route.html">Rongai Rutt</a>
+                        <a href="northern-circuit-route.html">Northern Circuit Rutt</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="safari.html">Safari Turer</a>
+                    <div class="dropdown-menu">
+                        <a href="safari.html">Om Safariturer</a>
+                        <a href="3day-safari.html">3 Dagars Safari</a>
+                        <a href="4day-safari.html">4 Dagars Safari</a>
+                        <a href="5day-safari.html">5 Dagars Safari</a>
+                        <a href="7day-safari.html">7 Dagars Safari</a>
+                    </div>
+                </li>
+                <li><a href="mount-meru.html">Mount Meru</a></li>
+                <li><a href="contact.html" class="contact-btn">Kontakta Oss</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <section class="route-detail-hero">
+        <img src="images/hillside.jpeg" alt="Lemosho Route" class="hero-bg">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Lemosho Route</h1>
+        </div>
+    </section>
+
+    <!-- Route Description Section -->
+    <section class="route-intro-section">
+        <div class="intro-container">
+            <div class="intro-image">
+                <img src="images/stella.jpeg" alt="Lemosho Route">
+            </div>
+            <div class="intro-text">
+                <p>Lemosho-rutten är en mindre frekventerad väg på Mount Kilimanjaro, känd för sina fantastiska vyer och rik flora och fauna. Denna rutt kännetecknas av sin gradvisa stigningen, vilket gör den lämplig för korrekt acklimatisering och minskar därmed risken för höjdsjuka. Normalt tar Lemosho-rutten 7 eller 8 dagar att genomföra, vilket ger vandrare möjlighet att helt fördjupa sig i de olika ekosystemen längs vägen, från frodiga regnskogar till alpina öknar. Solen erbjuder en flexibel resplan som rymmer både kortare och längre klättringar beroende på dina preferenser och fitnessnivå. Resan börjar vid Lemosho Glades, där vandrare får uppleva hisnande vyer av berget och omgivande landskap, inklusive den berömda Shira Plateau och de vulkaniska formationerna av Kibo. Rutten inkluderar också en mängd olika lägerplatser som ger möjligheter till vila och njutning av den slående naturen.</p>
+                <p>Sammantaget kombinerar Lemosho-rutten naturlig skönhet med en hanterbar vandrarupplevelse, vilket gör den till ett utmärkt val för dem som vill utforska Mount Kilimanjaro i en mer lugn takt.</p>
+                <button class="book-climb-btn" onclick="openBookingForm()">Boka din klättring</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Itinerary Section -->
+    <section class="itinerary-section">
+        <div class="itinerary-container">
+            <h2>Resplan</h2>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Ankomstdag</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Vid ankomst till Kilimanjaro International Airport kommer du att mötas av vår representant som kommer att ta dig till ditt hotell. Här kommer du att få träffa och hälsa på dina guider. Vid detta möte kommer vi att granska din utrustning för att försäkra oss om att du har allt du behöver. Efter denna genomgång rekommenderar vi en tidig kväll för en tidig upphämtning följande dag.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Dag 1 | Lemosho Glades till Big Tree Camp</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Efter frukost kommer du att hämtas från ditt hotell runt 8:00 och du kommer att köras till Lemosho Gate som ligger på västra sidan av Kilimanjaro. Efter registreringsprocessen börjar vi vår klättring stadigt genom skogarna i Lemosho Glades för att nå Big Tree Camp där du kommer att spendera natten. Under middagen kommer du att bli briefad för följande dag av din huvudguide.</p>
+                        <p><strong>Höjd:</strong> 2,360m (7,742ft) till 2,895m (9,498ft)</p>
+                        <p><strong>Distans:</strong> 7km (4.3 miles)</p>
+                        <p><strong>Vandring tid:</strong> 4 timmar</p>
+                        <p><strong>Vegetationszon:</strong> Regnskog</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Dag 2 | Big Tree Camp till Shira 1 Camp</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Din klättring fortsätter när du vandrar över regnskogen och in i en savann med högt gräs, ljung och vulkanisk berggrund draperad med laven. Vi får en rimlig mängd höjd idag och delar av rutten är ganska branta. Vår destination för idag är Shira 1 Camp där det finns härliga utsikter över Kibo Peak.</p>
+                        <p><strong>Höjd:</strong> 2,895m (9,498ft) till 3,610m (11,844ft)</p>
+                        <p><strong>Distans:</strong> 5.4km (3.4 miles)</p>
+                        <p><strong>Vandring tid:</strong> 5 timmar</p>
+                        <p><strong>Vegetationszon:</strong> Regnskog och låg alpin zon</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Dag 3 | Shira 1 Camp till Shira 2 Camp</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Idag är en lätt vandring när vi reser från Shira 1 Camp mot det andra högaltituds lägret, Shira 2 Camp. Denna vandring är inte svår och du kommer att kunna njuta av spektakulära vyer av Afrika och de unika flora av Mount Kilimanjaro och de kringliggande områdena. Vid en klar dag är Shira 2 Camp det bästa lägret för att se Mount Meru (det femte högsta berget i Afrika). När du anländer till lägret kommer du att ha lunch, och efter en tvåtimmars vila kommer alla att slutföra en acklimatiseringsvandring mot Lava Tower Camp som har en 300m höjdvinst.</p>
+                        <p><strong>Höjd:</strong> 3,505m (11,500ft) till 3,810m (12,500ft)</p>
+                        <p><strong>Distans:</strong> 8km (5 miles)</p>
+                        <p><strong>Vandring tid:</strong> 5 timmar</p>
+                        <p><strong>Vegetationszon:</strong> Låg alpin</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Dag 4 | Shira 2 Camp till Barranco Camp</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Din dag börjar med en tidig start och vandring genom frodiga öknar och förbi glaciärerna av Mawenzi Beach. Du kommer att nå den distinkta toppen av Lava Tower (4650m), vår höga punkt för dagen och en bra plats att njuta av lunch. På eftermiddagen gör vi en brant nedstigning till lägret för natten, beläget i basen av Great Barranco Valley skyddad av höga klippor inom synhåll för Heim Glacier. Under middagen kommer du att bli briefad för följande dag av din huvudguide.</p>
+                        <p><strong>Höjd:</strong> 3,810m (12,500ft) till 3,976m (13,044ft)</p>
+                        <p><strong>Distans:</strong> 10km (6.2 miles)</p>
+                        <p><strong>Vandring tid:</strong> 7 timmar</p>
+                        <p><strong>Vegetationszon:</strong> Hög alpin</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Dag 5 | Barranco Camp till Karanga Camp</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Efter en tidig frukost börjar vi den branta klättringen av att bestiga Barranco Wall. Medan vi vandrar upp i ravinen, upplever vi den karga klippklättringen på Mount Kilimanjaro och den spektakulära utsikten över Kibos glaciärer direkt framför oss. Efter pausen fortsätter vi vår vandring mot Lava Tower Camp som har en svår resa på 400m vid höjd. Efter lunch och en tvåtimmars vila tar alla en mer svår vandring mot Karanga Camp som har en 200m höjdvinst i höjd.</p>
+                        <p><strong>Höjd:</strong> 3,976m (13,044ft) till 3,995m (13,106ft)</p>
+                        <p><strong>Distans:</strong> 5.5km (3.4 miles)</p>
+                        <p><strong>Vandring tid:</strong> 5 timmar</p>
+                        <p><strong>Vegetationszon:</strong> Hög alpin</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Dag 6 | Karanga Camp till Barafu Camp</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Idag vandrar du till Barafu Summit Camp, utgångspunkten för en natt som bestiger Uhuru Peak (5,895m). Du kommer att klättra branta öde sluttningar innan du når baslägret. Efter att ha återfått styrkan har du en tidig middag och sedan tillbaka till Barafu Camp för en tidig middag. Vi rekommenderar vila och sömn innan vi väcks klockan 23:00 för att förbereda för toppmötet. Under middagen kommer du att bli briefad för följande dag av din huvudguide.</p>
+                        <p><strong>Höjd:</strong> 3,995m (13,104ft) till 4,673m (15,331ft)</p>
+                        <p><strong>Distans:</strong> 3km (1.9 miles)</p>
+                        <p><strong>Vandring tid:</strong> 3 timmar</p>
+                        <p><strong>Vegetationszon:</strong> Hög alpin</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Dag 7 | Barafu Camp till Uhuru Peak till Mweka Camp (Toppdag)</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Vi börjar toppklättringen vid midnatt och går stadigt uppåt mot toppglaciärerna. Vi kommer att klättra långsamt men få otrolig höjd över en kort distans. Vi når kraterkanten vid Stella Point (5,739m) när de första solstrålarna börjar visa sig. Här tar vi en kort paus för att titta på soluppgången över Afrika. Du får spektakulära vyer av isklipporna inom kratern. Vi fortsätter i ytterligare en timme upp till toppen, Uhuru Peak (5,895m). Vi börjar vår nedstigning tillbaka till Barafu Camp för frukost. Efter en kort vila fortsätter vi att stiga ner till Mweka Camp för en lång välförtjänt vila. Under middagen kommer du att bli briefad för följande dag av din huvudguide.</p>
+                        <p><strong>Höjd:</strong> 4,673m (15,331ft) till 5,895m (19,341ft) till 3,068m (10,065ft)</p>
+                        <p><strong>Distans:</strong> 16km (9.6 miles)</p>
+                        <p><strong>Vandring tid:</strong> 15-17 timmar</p>
+                        <p><strong>Vegetationszon:</strong> Glaciär, hög alpin, låg alpin, regnskog</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Dag 8 | Mweka Camp till Mweka Gate</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>En mild vandring tar oss ner genom regnskogen till Mweka Gate, där vi slutför parkformaliteterna och presenterar dig med ett certifikat som bekräftar att du besteg Mount Kilimanjaro. Vi möts sedan av våra fordon och överförs tillbaka till ditt hotell för en välförtjänt vila och firande med dina guider.</p>
+                        <p><strong>Höjd:</strong> 3,068m (10,065ft) till 1,640m (5,380ft)</p>
+                        <p><strong>Distans:</strong> 9km (5.6 miles)</p>
+                        <p><strong>Vandring tid:</strong> 6-7 timmar</p>
+                        <p><strong>Vegetationszon:</strong> Regnskog</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Sista dagen</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Efter frukost kommer ett fordon att överföra dig till din nästa destination. Om du har extra tid rekommenderar vi att du förlänger din vistelse. Solen erbjuder safaripaket för att se naturen när den är som bäst eller kanske en avslappnande strandresa till Zanzibar.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Table Section -->
+    <section class="pricing-section">
+        <div class="pricing-container">
+            <h2>Lemosho klättring (inkl. 2 nätter hotellvistelse)</h2>
+            <h3>Pris per person</h3>
+            
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>1 Pers</th>
+                        <th>2 Pers</th>
+                        <th>3 Pers</th>
+                        <th>4 Pers</th>
+                        <th>5 Pers</th>
+                        <th>6 Pers</th>
+                        <th>7 Pers</th>
+                        <th>8+ Pers</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Lemosho Rutt 7-dagar</td>
+                        <td>SEK38,300</td>
+                        <td>SEK30,300</td>
+                        <td>SEK26,800</td>
+                        <td>SEK25,400</td>
+                        <td>SEK25,200</td>
+                        <td>SEK24,500</td>
+                        <td>SEK24,250</td>
+                        <td>SEK24,100</td>
+                    </tr>
+                    <tr>
+                        <td>Lemosho Rutt 8-dagar</td>
+                        <td>SEK41,800</td>
+                        <td>SEK34,500</td>
+                        <td>SEK29,500</td>
+                        <td>SEK28,500</td>
+                        <td>SEK28,000</td>
+                        <td>SEK27,200</td>
+                        <td>SEK27,000</td>
+                        <td>SEK24,100</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <button class="book-climb-btn" onclick="openBookingForm()">Boka din klättring</button>
+        </div>
+    </section>
+
+    <!-- Inclusions & Exclusions Section -->
+    <section class="inclusions-section">
+        <div class="inclusions-container">
+            <div class="inclusions-image">
+                <img src="images/cloud.jpeg" alt="Berglandskap">
+            </div>
+            <div class="inclusions-text">
+                <h2>Inkluderingar & Exkluderingar</h2>
+                
+                <div class="inclusions-block">
+                    <h3>Inkluderingar</h3>
+                    <p>Flygplatstransfer från Kilimanjaro International Airport till logi (retur).</p>
+                    <p>Halvpension logi 1 natt före Mount Kilimanjaro klättringen börjar och 1 natt efter Mount Kilimanjaro klättringen (detta inkluderar måltider och skatter som krävs).</p>
+                    <p>Överföringsavgifter från logierna till Mount Kilimanjaro ingångsgrind (dag 1) och överföring från Mount Kilimanjaro utgångsgrind tillbaka till logierna (dag 7).</p>
+                    <p>Alla Mount Kilimanjaro parkavgifter (som krävs enligt tanzanisk lag).</p>
+                    <p>Alla löner för guider, kockar och bärare på bergsklättringen.</p>
+                    <p>Utrustningskostnader, inklusive tält (delning av två), campingmattor, matsalstält, kökstält, stolar, bord och matredskap.</p>
+                    <p>Privat toalettuthyrning (rekommenderas. Offentliga toaletter tillhandahålls på berget, men de används av alla och är dina vanliga camping drop toaletter).</p>
+                </div>
+
+                <div class="exclusions-block">
+                    <h3>Exkluderingar</h3>
+                    <p>Internationella flygbiljetter från ditt ursprung till Kilimanjaro International Airport.</p>
+                    <p>Visum krav avgifter som krävs enligt tanzanisk lag (Du kan ansöka om visum på Kilimanjaro International Airport, men vi föreslår att du får förgodkännande eftersom det går snabbare vid ankomst).</p>
+                    <p>Reseförsäkring: Se till att din försäkring täcker bergsklättring upp till 6 000 meter.</p>
+                    <p>Eventuella för-medicinska krav (inklusive eventuella nödvändiga Covid-tester).</p>
+                    <p>Dricks för guider, kockar och bärare. Vi rekommenderar att tipsa guiderna $20 per dag vardera, kocken $15 per dag och bärarna $10 per dag; men känn dig fri att tipsa hur du ser lämpligt.</p>
+                    <p>Om du är intresserad av att äta utanför din logi under din vistelse i Arusha city, kommer du att behöva täcka denna kostnad.</p>
+                    <p>Alla spenderande pengar. Vi kommer att stanna på flera platser för att ge dig möjlighet att köpa souvenirer.</p>
+                    <p>Om du är intresserad av att dricka under din vistelse, är alkohol en extra kostnad liksom alla drycker som beställs på lounge baren.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packing List Section -->
+    <section class="packing-section">
+        <div class="packing-container">
+            <div class="packing-image">
+                <img src="images/tophill.jpeg" alt="Bergvy">
+            </div>
+            <div class="packing-text">
+                <h2>Solens Föreslagna Packningslista</h2>
+                <p>Att ha rätt utrustning för att klättra på ett berg är avgörande för att säkerställa säkerhet och förbättra den övergripande upplevelsen. Korrekt skodon, såsom robusta vandringskängor, ger nödvändigt stöd och grepp på varierande terräng, medan väderlämpliga kläder skyddar mot elementen och håller klättrare varma och torra. Viktiga utrustningar, inklusive hjälm, sele och klätterrep, kan förhindra olyckor och skador. Dessutom är rätt navigeringsverktyg och första hjälpen -förnödenheter avgörande för att svara på oväntade situationer i avlägsna miljöer.</p>
+                <p>Att investera i kvalitetsutrustning bidrar inte bara till en framgångsrik uppstigning utan främjar också en känsla av självförtroende och beredskap för klättrare som vågar sig in i utmanande landskap.</p>
+                <button class="download-btn">Ladda ner PDF här</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Form Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeBookingForm()">&times;</span>
+            <h2>Lemosho Rutt</h2>
+            <form id="bookingForm" onsubmit="handleBookingSubmit(event)">
+                <div class="form-group">
+                    <label>Antal dagar <span class="required">(obligatorisk)</span></label>
+                    <select name="days" required>
+                        <option value="">Välj ett alternativ</option>
+                        <option value="7">7 dagar</option>
+                        <option value="8">8 dagar</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Antal personer <span class="required">(obligatorisk)</span></label>
+                    <input type="number" name="people" min="1" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Förnamn <span class="required">(obligatorisk)</span></label>
+                        <input type="text" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Efternamn <span class="required">(obligatorisk)</span></label>
+                        <input type="text" name="lastName" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>E-post <span class="required">(obligatorisk)</span></label>
+                    <input type="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Bekräfta e-post <span class="required">(obligatorisk)</span></label>
+                    <input type="email" name="confirmEmail" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Önskat datum</label>
+                    <input type="date" name="date">
+                </div>
+
+                <div class="form-group">
+                    <label>Meddelande <span class="required">(obligatorisk)</span></label>
+                    <textarea name="message" rows="6" required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Skicka</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <img src="images/logo.png" alt="Solen Safaris" class="footer-logo">
+            </div>
+            <div class="footer-links">
+                <a href="/about-us.html">Om Oss</a>
+                <a href="/faq.html">FAQ</a>
+                <a href="/contact.html">Kontakta Oss</a>
+                <a href="/terms.html">Villkor</a>
+            </div>
+        </div>
+        <div class="footer-social">
+    <a href="https://www.instagram.com/yourusername" target="_blank" aria-label="Instagram">
+        <i class="bi bi-instagram"></i>
+    </a>
+
+    <a href="https://web.facebook.com/praygod.fadhili.3" target="_blank" aria-label="Facebook">
+        <i class="bi bi-facebook"></i>
+    </a>
+
+    <a href="https://x.com/yourusername" target="_blank" aria-label="X (Twitter)">
+        <i class="bi bi-twitter-x"></i>
+    </a>
+
+    <a href="https://wa.me/254712345678" target="_blank" aria-label="WhatsApp">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+
+    <a href="mailto:info@yourdomain.com" aria-label="Email">
+        <i class="bi bi-envelope-fill"></i>
+    </a>
+
+   <!-- <a href="https://www.youtube.com/@yourchannel" target="_blank" aria-label="YouTube">
+        <i class="bi bi-youtube"></i>
+    </a>-->
+</div>
+    </footer>
+
+    <!-- Fixed Language Selector 
+    <div class="fixed-language-selector">
+        <select id="language-select" onchange="translatePage(this.value)">
+            <option value="sv">🌐 Svenska</option>
+            <option value="en">English</option>
+        </select>
+    </div>-->
+
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("szRI9NE39riHh2l8G");
+        })();
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    const dropdowns = document.querySelectorAll('.dropdown');
+
+    // Toggle mobile menu
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+
+    // Close menu when clicking X (::before pseudo element area)
+    navLinks.addEventListener('click', (e) => {
+        const rect = navLinks.getBoundingClientRect();
+        const closeButtonArea = {
+            left: rect.right - 60,
+            right: rect.right - 20,
+            top: rect.top + 20,
+            bottom: rect.top + 60
+        };
+        
+        if (e.clientX >= closeButtonArea.left && e.clientX <= closeButtonArea.right &&
+            e.clientY >= closeButtonArea.top && e.clientY <= closeButtonArea.bottom) {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+            dropdowns.forEach(dropdown => dropdown.classList.remove('active'));
+        }
+    });
+
+    // Mobile dropdown toggle - prevent redirect and show submenu
+    dropdowns.forEach(dropdown => {
+        const mainLink = dropdown.querySelector('a');
+        
+        mainLink.addEventListener('click', (e) => {
+            // On mobile, prevent redirect and toggle dropdown
+            if (window.innerWidth <= 992) {
+                e.preventDefault();
+                dropdown.classList.toggle('active');
+            }
+        });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+            dropdowns.forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
+        }
+    });
+    
+    // Close menu when clicking dropdown link
+    document.querySelectorAll('.dropdown-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+            dropdowns.forEach(dropdown => dropdown.classList.remove('active'));
+        });
+    });
+    </script>
+
+    <!-- ONLY LOAD route-detail-script.js -->
+    <script src="js/route-detail-script.js"></script>
+</body>
+</html>

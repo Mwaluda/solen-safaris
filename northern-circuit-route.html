@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Northern Circuit Rutt - Solen Safaris</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/route-detail-style.css">
+    <!-- NAVBAR CSS MUST BE LAST -->
+    <link rel="stylesheet" href="css/navbar.css">
+    <style>
+        .footer-social a {
+    display: inline-flex;
+    margin: 0 10px;
+    font-size: 26px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.footer-social a:hover {
+    transform: scale(1.2);
+    opacity: 0.85;
+}
+
+/* Brand colors */
+.bi-instagram { color: #E4405F; }
+.bi-facebook  { color: #1877F2; }
+.bi-whatsapp  { color: #25D366; }
+.bi-youtube   { color: #FF0000; }
+.bi-envelope-fill { color: #EA4335; }
+.bi-twitter-x { color: #000000; }
+    </style>
+</head>
+<body>
+    <!-- Fixed Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Solen Safaris">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Hem</a></li>
+                <li class="dropdown">
+                    <a href="kilimanjaro.html">Mount Kilimanjaro</a>
+                    <div class="dropdown-menu">
+                        <a href="kilimanjaro.html">Om Mount Kilimanjaro</a>
+                        <a href="machame-route.html">Machame Rutt</a>
+                        <a href="marangu-route.html">Marangu Rutt</a>
+                        <a href="lemosho-route.html">Lemosho Rutt</a>
+                        <a href="umbwe-route.html">Umbwe Rutt</a>
+                        <a href="rongai-route.html">Rongai Rutt</a>
+                        <a href="northern-circuit-route.html">Northern Circuit Rutt</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="safari.html">Safari Turer</a>
+                    <div class="dropdown-menu">
+                        <a href="safari.html">Om Safariturer</a>
+                        <a href="3day-safari.html">3 Dagars Safari</a>
+                        <a href="4day-safari.html">4 Dagars Safari</a>
+                        <a href="5day-safari.html">5 Dagars Safari</a>
+                        <a href="7day-safari.html">7 Dagars Safari</a>
+                    </div>
+                </li>
+                <li><a href="mount-meru.html">Mount Meru</a></li>
+                <li><a href="contact.html" class="contact-btn">Kontakta Oss</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="route-detail-hero">
+        <img src="images/ice.jpeg" alt="Northern Circuit Rutt" class="hero-bg">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Northern Circuit Rutt</h1>
+        </div>
+    </section>
+
+    <!-- Route Description Section -->
+    <section class="route-intro-section">
+        <div class="intro-container">
+            <div class="intro-image">
+                <img src="images/hillside.jpeg" alt="Northern Circuit Rutt">
+            </div>
+            <div class="intro-text">
+                <p>Northern Circuit-rutten på Mount Kilimanjaro är en anmärkningsvärd vandring känd för sin natursköna mångfald och utökade tid på berget. Denna rutt är en av de mindre populära vägarna, vilket gör att vandrare kan uppleva en tystare uppstigning, liksom fantastiska vyer av Kilimanjaros olika ekosystem. Vandringen varar vanligtvis cirka 9 dagar, vilket ger gott om tid för acklimatisering och att njuta av de varierande landskapen. Längre varaktighet förbättrar också chanserna att nå toppen framgångsrikt. Northern Circuit tar klättrare genom frodiga regnskogar, hed och hedmark, alpina öknar och glaciala landskap. Denna variation visar de unika ekologiska zonerna av berget. Viktiga punkter längs rutten inkluderar de fantastiska vyerna från Lemosho och de hisnande vyerna vid de norra isfälten. Vandringen passerar också genom olika läger, med väldefinierade vägar lämpliga för vandrare av olika skicklighetsnivåer.</p>
+                <p>Denna rutt är idealisk för dem som söker en omfattande Kilimanjaro-upplevelse, som balanserar en hanterbar takt med möjligheten att verkligen njuta av vildmarken och den unika skönheten hos Afrikas högsta topp.</p>
+                <button class="book-climb-btn" onclick="openBookingForm()">Boka din klättring</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Itinerary Section -->
+    <section class="itinerary-section">
+        <div class="itinerary-container">
+            <h2>Resplan</h2>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Ankomstdag</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Vid ankomst till Kilimanjaro International Airport kommer du att mötas av en Solen-representant som kommer att ta dig till ditt hotell. Där får du tid att slå dig ner innan ett möte med dina guider. Vid detta möte kommer vi att informera dig om vad du kan förvänta dig på Mount Kilimanjaro och svara på eventuella sista minuten frågor du kan ha. Efter genomgången rekommenderar vi en tidig kväll för en tidig upphämtning följande dag.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Dag 1 | Lemosho Glades till Big Tree Camp</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Efter frukost hämtas du från ditt hotell runt 8:00 och du kommer att köras till Lemosho Gate som ligger på västra sidan av Kilimanjaro. Efter registreringsprocessen börjar vi vår klättring stadigt genom skogarna i Lemosho Glades för att nå Big Tree Camp där du kommer att spendera natten. Under middagen kommer du att bli briefad för följande dag av din huvudguide.</p>
+                        <p><strong>Höjd:</strong> 2,360m (7,742ft) till 2,895m (9,498ft)</p>
+                        <p><strong>Distans:</strong> 7km (4.3 miles)</p>
+                        <p><strong>Vandring tid:</strong> 4 timmar</p>
+                        <p><strong>Vegetationszon:</strong> Regnskog</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Dag 2 | Big Tree Camp till Shira 1 Camp</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Din klättring fortsätter när du vandrar över regnskogen och in i en savann med högt gräs, ljung och vulkanisk berggrund draperad med lavskägg. Vi får en rimlig mängd höjd idag och delar av rutten är ganska branta. Vår destination för idag är Shira 1 Camp där det ofta finns vyer av Kibo Peak.</p>
+                        <p><strong>Höjd:</strong> 2,850m (9,350ft) till 3,810m (12,500ft)</p>
+                        <p><strong>Distans:</strong> 5.4km (3.4 miles)</p>
+                        <p><strong>Vandring tid:</strong> 5 timmar</p>
+                        <p><strong>Vegetationszon:</strong> Regnskog och låg alpin zon</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Dag 3 | Shira 1 Camp till Moir Camp</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Idag fortsätter vi österut som passerar genom Senecios trädgård. Morgonen spenderas med att vandra upp till Lava Tower och den ikoniska Shark's Tooth-klippformationen vid 4,600 meter, där vi kommer att ha lunch. Efter lunch ansluter vi oss till den norra kretsen och går ner till Moir Camp. Detta är en viktig dag i din vandring eftersom du kommer att få uppleva hög höjd och sedan sova lågt, vilket är bra för acklimatiseringsprocessen. Under middagen kommer du att bli briefad för följande dag av din huvudguide.</p>
+                        <p><strong>Höjd:</strong> 3,505m (11,500ft) till 4,200m (13,580ft)</p>
+                        <p><strong>Distans:</strong> 15km (8 miles)</p>
+                        <p><strong>Vandring tid:</strong> 5-7 timmar</p>
+                        <p><strong>Vegetationszon:</strong> Låg alpin och hög alpin</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Dag 4 | Moir Camp till Buffalo Camp</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Idag innebär en måttligt brant klättring ut ur Moir Valley. Vi har möjlighet att ta en liten omväg här för att klättra toppen av Little Lent Hill på 4,375 meter innan vi återvänder till Northern Circuit-spåret. Härifrån kan klättrare se slätterna som ligger norr om Mount Kilimanjaro som sträcker sig ut till gränsen mellan Kenya/Tanzania. Under middagen kommer du att bli briefad för följande dag av din huvudguide.</p>
+                        <p><strong>Höjd:</strong> 4,200m (13,580ft) till 4,020m (13,200ft)</p>
+                        <p><strong>Distans:</strong> 12km (7 miles)</p>
+                        <p><strong>Vandring tid:</strong> 5-7 timmar</p>
+                        <p><strong>Vegetationszon:</strong> Hög alpin</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Dag 5 | Buffalo Camp till Third Cave</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Dagens vandring börjar med en klättring upp på Buffalo-ryggen och ner i Porfu Camp där vi stannar för lunch. Rutten fortsätter sedan österut runt de norra sluttningarna till Third Cave där vi kommer att spendera natten. Vandringen är kortare än föregående dag så vi anländer till lägret runt mitten av eftermiddagen. Under middagen kommer du att bli briefad för följande dag av din huvudguide.</p>
+                        <p><strong>Höjd:</strong> 4,020m (13,200ft) till 3,870m (12,700ft)</p>
+                        <p><strong>Distans:</strong> 8km (5 miles)</p>
+                        <p><strong>Vandring tid:</strong> 5-7 timmar</p>
+                        <p><strong>Vegetationszon:</strong> Hög alpin</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Dag 6 | Third Cave till School Hut</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Idag lämnar vi vårt läger och korsar månöken av 'Sadeln' som sitter mellan Mawenzi och Kibo. När vi når School Hut får du en tidig middag. Vi rekommenderar vila och sömn innan du väcks klockan 23:00 för att förbereda för toppklättringen. Under middagen kommer du att bli briefad för följande dag av din huvudguide.</p>
+                        <p><strong>Höjd:</strong> 3,870m (12,700ft) till 4,750m (15,600ft)</p>
+                        <p><strong>Distans:</strong> 5km (3 miles)</p>
+                        <p><strong>Vandring tid:</strong> 4-5 timmar</p>
+                        <p><strong>Vegetationszon:</strong> Hög alpin och glaciär</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Dag 7 | School Hut till Uhuru Peak till Mweka Camp (Toppdag)</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Vi börjar toppklättringen vid gryningen och går brant uppåt mot toppglaciärerna. Vi når Uhuru Peak (5895m) tidigt på eftermiddagen när några grupper är runt. En kort nedstigning tar dig till Crater Camp, inställd i mjuk sand nära den berömda Furtwangler-glaciären. Efter en kort vila fortsätter vi att gå ner till Mweka Camp för en lång välförtjänt vila. Under middagen kommer du att bli briefad för följande dag av din huvudguide.</p>
+                        <p><strong>Höjd:</strong> 4,750m (15,600ft) till 5,895m (19,341ft) till 3,068m (10,065ft)</p>
+                        <p><strong>Distans:</strong> 16.5km (9.5 miles)</p>
+                        <p><strong>Vandring tid:</strong> 12-14 timmar</p>
+                        <p><strong>Vegetationszon:</strong> Glaciär, hög alpin, låg alpin, regnskog</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Dag 8 | Mweka Camp till Mweka Gate</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>En mild vandring tar oss ner genom regnskogen till Mweka Gate, där vi slutför parkformaliteterna och presenterar dig med ett certifikat som bekräftar att du besteg Mount Kilimanjaro. Vi möts sedan av våra fordon och överförs tillbaka till hotellet för en välförtjänt vila och firande med dina guider.</p>
+                        <p><strong>Höjd:</strong> 3,068m (10,065ft till 1,640m (5,380ft)</p>
+                        <p><strong>Distans:</strong> 10km (6.5 miles)</p>
+                        <p><strong>Vandring tid:</strong> 3-4 timmar</p>
+                        <p><strong>Vegetationszon:</strong> Regnskog</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Sista dagen</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Efter frukost kommer ett fordon att överföra dig till din nästa destination. Om du har extra tid rekommenderar vi att du förlänger din vistelse. Solen erbjuder safaripaket för att se naturen när den är som bäst eller kanske en avslappnande strandresa till Zanzibar.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Table Section -->
+    <section class="pricing-section">
+        <div class="pricing-container">
+            <h2>Northern Circuit klättring (inkl. 2 nätter hotellvistelse)</h2>
+            <h3>Pris per person</h3>
+            
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>1 Pers</th>
+                        <th>2 Pers</th>
+                        <th>3 Pers</th>
+                        <th>4 Pers</th>
+                        <th>5 Pers</th>
+                        <th>6 Pers</th>
+                        <th>7 Pers</th>
+                        <th>8+ Pers</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Northern Circuit Rutt 8-dagar</td>
+                        <td>SEK45,100</td>
+                        <td>SEK36,300</td>
+                        <td>SEK32,400</td>
+                        <td>SEK30,800</td>
+                        <td>SEK30,500</td>
+                        <td>SEK29,800</td>
+                        <td>SEK29,400</td>
+                        <td>SEK29,300</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <button class="book-climb-btn" onclick="openBookingForm()">Boka din klättring</button>
+        </div>
+    </section>
+
+    <!-- Inclusions & Exclusions Section -->
+    <section class="inclusions-section">
+        <div class="inclusions-container">
+            <div class="inclusions-image">
+                <img src="images/cloud.jpeg" alt="Berglandskap">
+            </div>
+            <div class="inclusions-text">
+                <h2>Inkluderingar & Exkluderingar</h2>
+                
+                <div class="inclusions-block">
+                    <h3>Inkluderingar</h3>
+                    <p>Flygplatstransfer från Kilimanjaro International Airport till logi (retur).</p>
+                    <p>Halvpension logi 1 natt före Mount Kilimanjaro klättringen börjar och 1 natt efter Mount Kilimanjaro klättringen (detta inkluderar måltider och skatter som krävs).</p>
+                    <p>Överföringsavgifter från logierna till Mount Kilimanjaro ingångsgrind (dag 1) och överföring från Mount Kilimanjaro utgångsgrind tillbaka till logierna (dag 7).</p>
+                    <p>Alla Mount Kilimanjaro parkavgifter (som krävs enligt tanzanisk lag).</p>
+                    <p>Alla löner för guider, kockar och bärare på bergsklättringen.</p>
+                    <p>Utrustningskostnader, inklusive tält (delning av två), campingmattor, matsalstält, kökstält, stolar, bord och matredskap.</p>
+                    <p>Privat toalettuthyrning (rekommenderas. Offentliga toaletter tillhandahålls på berget, men de används av alla och är dina vanliga camping drop toaletter).</p>
+                    <p>Mat på berget (3 måltider per person per dag, exklusive frukost dag 1, som tillhandahålls av logiet, och middag dag 7, som återigen tillhandahålls av logiet).</p>
+                </div>
+
+                <div class="exclusions-block">
+                    <h3>Exkluderingar</h3>
+                    <p>Internationella flygbiljetter från ditt ursprung till Kilimanjaro International Airport.</p>
+                    <p>Visum krav avgifter som krävs enligt tanzanisk lag (Du kan ansöka om visum på Kilimanjaro International Airport, men vi föreslår att du får förgodkännelse eftersom det går snabbare vid ankomst).</p>
+                    <p>Reseförsäkring: Se till att din försäkring täcker bergsklättring upp till 6 000 meter.</p>
+                    <p>Eventuella för-medicinska krav (inklusive eventuella nödvändiga Covid-tester).</p>
+                    <p>Dricks för guider, kockar och bärare. Vi rekommenderar att tipsa guiderna $20 per dag vardera, kocken $15 per dag och bärarna $10 per dag; men känn dig fri att tipsa hur du ser lämpligt.</p>
+                    <p>Om du är intresserad av att äta utanför din logi under din vistelse i Arusha city, kommer du att behöva täcka denna kostnad.</p>
+                    <p>Alla spenderande pengar. Vi kommer att stanna på flera platser för att ge dig möjlighet att köpa souvenirer.</p>
+                    <p>Om du är intresserad av att dricka under din vistelse, är alkohol en extra kostnad liksom alla drycker som beställs på lounge baren.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packing List Section -->
+    <section class="packing-section">
+        <div class="packing-container">
+            <div class="packing-image">
+                <img src="images/tophill.jpeg" alt="Bergvy">
+            </div>
+            <div class="packing-text">
+                <h2>Solens Föreslagna Packningslista</h2>
+                <p>Att ha rätt utrustning för att klättra på ett berg är avgörande för att säkerställa säkerhet och förbättra den övergripande upplevelsen. Korrekt skodon, såsom robusta vandringskängor, ger nödvändigt stöd och grepp på varierande terräng, medan väderlämpliga kläder skyddar mot elementen och håller klättrare varma och torra. Viktiga utrustningar, inklusive hjälm, sele och klätterrep, kan förhindra olyckor och skador. Dessutom är rätt navigeringsverktyg och första hjälpen-förnödenheter avgörande för att svara på oväntade situationer i avlägsna miljöer.</p>
+                <p>Att investera i kvalitetsutrustning bidrar inte bara till en framgångsrik uppstigning utan främjar också en känsla av självförtroende och beredskap för klättrare som vågar sig in i utmanande landskap.</p>
+                 <!--<button class="download-btn">Ladda ner PDF här</button>-->
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Form Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeBookingForm()">&times;</span>
+            <h2>Northern Circuit Rutt</h2>
+            <form id="bookingForm" onsubmit="handleBookingSubmit(event)">
+                <div class="form-group">
+                    <label>Antal dagar <span class="required">(obligatorisk)</span></label>
+                    <select name="days" required>
+                        <option value="">Välj ett alternativ</option>
+                        <option value="8">8 dagar</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Antal personer <span class="required">(obligatorisk)</span></label>
+                    <input type="number" name="people" min="1" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Förnamn <span class="required">(obligatorisk)</span></label>
+                        <input type="text" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Efternamn <span class="required">(obligatorisk)</span></label>
+                        <input type="text" name="lastName" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>E-post <span class="required">(obligatorisk)</span></label>
+                    <input type="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Bekräfta e-post <span class="required">(obligatorisk)</span></label>
+                    <input type="email" name="confirmEmail" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Önskat datum</label>
+                    <input type="date" name="date">
+                </div>
+
+                <div class="form-group">
+                    <label>Meddelande <span class="required">(obligatorisk)</span></label>
+                    <textarea name="message" rows="6" required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Skicka</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <img src="images/logo.png" alt="Solen Safaris" class="footer-logo">
+            </div>
+            <div class="footer-links">
+                <a href="/about-us.html">Om Oss</a>
+                <a href="/faq.html">FAQ</a>
+                <a href="/contact.html">Kontakta Oss</a>
+                <a href="/terms.html">Villkor</a>
+            </div>
+        </div>
+        <div class="footer-social">
+    <a href="https://www.instagram.com/yourusername" target="_blank" aria-label="Instagram">
+        <i class="bi bi-instagram"></i>
+    </a>
+
+    <a href="https://web.facebook.com/praygod.fadhili.3" target="_blank" aria-label="Facebook">
+        <i class="bi bi-facebook"></i>
+    </a>
+
+    <a href="https://x.com/yourusername" target="_blank" aria-label="X (Twitter)">
+        <i class="bi bi-twitter-x"></i>
+    </a>
+
+    <a href="https://wa.me/254712345678" target="_blank" aria-label="WhatsApp">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+
+    <a href="mailto:info@yourdomain.com" aria-label="Email">
+        <i class="bi bi-envelope-fill"></i>
+    </a>
+</div>
+    </footer>
+
+    <!-- Fixed Language Selector 
+    <div class="fixed-language-selector">
+        <select id="language-select" onchange="translatePage(this.value)">
+            <option value="sv">🌐 Svenska</option>
+            <option value="en">English</option>
+        </select>
+    </div>-->
+
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("szRI9NE39riHh2l8G");
+        })();
+    </script>
+
+    <script src="js/navbar.js"></script>
+    <script src="js/route-detail-script.js"></script>
+</body>
+</html>

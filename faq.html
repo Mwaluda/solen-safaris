@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanliga Frågor - Solen Safaris</title>
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #8B7355;
+            --dark: #1a1a1a;
+            --light: #f8f8f8;
+            --gray: #555;
+            --transition: all 0.4s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', system-ui, sans-serif;
+            line-height: 1.7;
+            color: #333;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 24px 5vw;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(6px);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 68px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 36px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.05rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .contact-btn {
+            background: var(--primary);
+            color: white !important;
+            padding: 10px 26px;
+            border-radius: 8px;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: white;
+        }
+        /* Navbar */
+        .navbar {
+            position: absolute;
+            top:0; left:0; width:100%; z-index:1000;
+            padding:24px 5vw;
+            background:rgba(0,0,0,0.4);
+            backdrop-filter:blur(6px);
+        }
+        .nav-container {
+            max-width:1400px; margin:0 auto;
+            display:flex; justify-content:space-between; align-items:center;
+        }
+        .logo img { height:68px; width:auto; }
+        .nav-links {
+            display:flex; list-style:none; gap:36px; align-items:center;
+        }
+        .nav-links a {
+            color:white; text-decoration:none; font-weight:500; font-size:1.05rem;
+            transition:var(--transition);
+        }
+        .nav-links a:hover { color:var(--primary); }
+        .contact-btn {
+            background:var(--primary); color:white !important;
+            padding:10px 26px; border-radius:8px;
+        }
+        .hamburger { display:none; flex-direction:column; gap:6px; cursor:pointer; }
+        .hamburger span { width:28px; height:3px; background:white; transition: all 0.3s ease; }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+       /* Navbar Dropdown Styles */
+.nav-links .dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: rgba(255,255,255,0.98);
+    min-width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    padding: 8px 0;
+    margin-top: 8px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px 20px;
+    color: #2c3e50 !important;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: background 0.2s ease, color 0.2s ease;
+    white-space: nowrap;
+}
+
+.dropdown-menu a:hover {
+    background: #f5f5f5;
+    color: var(--primary-color, #D4630F) !important;
+}
+        /* HERO */
+        .route-detail-hero {
+            position: relative;
+            height: 50vh;
+            min-height: 380px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+                        url("images/beast.jpeg") center/cover no-repeat fixed;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 5.5vw, 5rem);
+            color: white;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        /* FAQ SECTION */
+        .itinerary-section {
+            padding: clamp(80px, 9vw, 120px) 5vw;
+            background: white;
+        }
+
+        .itinerary-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .itinerary-container h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.4rem, 4vw, 3.2rem);
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--dark);
+        }
+
+        .accordion {
+            max-width: 920px;
+            margin: 0 auto;
+        }
+
+        .accordion-item {
+            margin-bottom: 14px;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 18px 28px;
+            background: #fafafa;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--dark);
+            transition: background 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background: #f5f5f5;
+        }
+
+        .accordion-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            transition: transform 0.35s ease;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(45deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 28px;
+            background: white;
+            transition: max-height 0.4s ease, padding 0.35s ease;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 1800px; /* increased for longer answers */
+            padding: 24px 28px;
+        }
+
+        .accordion-content p {
+            margin-bottom: 1em;
+            color: var(--gray);
+            font-size: 1rem;
+        }
+
+        /* Contact box */
+        .contact-box {
+            text-align: center;
+            margin-top: 60px;
+            padding: 40px 25px;
+            background: var(--light);
+            border-radius: 14px;
+        }
+
+        .contact-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.9rem;
+            margin-bottom: 16px;
+            color: var(--dark);
+        }
+
+        .contact-box p {
+            font-size: 1.05rem;
+            color: var(--gray);
+            margin-bottom: 28px;
+        }
+
+        .contact-box a {
+            display: inline-block;
+            padding: 14px 42px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .contact-box a:hover {
+            background: #6d5a44;
+            transform: translateY(-2px);
+        }
+
+        /* FOOTER - thin/compact */
+        .footer {
+            background: #0f0f0f;
+            color: #ddd;
+            padding: 30px 5vw 25px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .footer-logo {
+            height: 46px;
+            width: auto;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 28px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 0.96rem;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* Language selector */
+        .fixed-language-selector {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 1000;
+        }
+
+        .fixed-language-selector select {
+            padding: 10px 18px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            background: white;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(15,15,15,0.98);
+                flex-direction: column;
+                padding: 40px 5vw;
+                gap: 24px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .route-detail-hero {
+                height: 45vh;
+            }
+
+            .accordion-header {
+                padding: 16px 24px;
+                font-size: 1rem;
+            }
+        }
+/* Brand colors */
+.bi-instagram { color: #E4405F; }
+.bi-facebook  { color: #1877F2; }
+.bi-whatsapp  { color: #25D366; }
+.bi-youtube   { color: #FF0000; }
+.bi-envelope-fill { color: #EA4335; }
+.bi-twitter-x { color: #000000; }
+    </style>
+</head>
+<body>
+
+ <!-- Fixed Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Solen Safaris">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Hem</a></li>
+                <li class="dropdown">
+                    <a href="kilimanjaro.html">Mount Kilimanjaro</a>
+                    <div class="dropdown-menu">
+                        <a href="kilimanjaro.html">Om Mount Kilimanjaro</a>
+                        <a href="machame-route.html">Machame Rutt</a>
+                        <a href="marangu-route.html">Marangu Rutt</a>
+                        <a href="lemosho-route.html">Lemosho Rutt</a>
+                        <a href="umbwe-route.html">Umbwe Rutt</a>
+                        <a href="rongai-route.html">Rongai Rutt</a>
+                        <a href="northern-circuit-route.html">Northern Circuit Rutt</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="safari.html">Safari Turer</a>
+                    <div class="dropdown-menu">
+                        <a href="safari.html">Om Safariturer</a>
+                        <a href="3day-safari.html">3 Dagars Safari</a>
+                        <a href="4day-safari.html">4 Dagars Safari</a>
+                        <a href="5day-safari.html">5 Dagars Safari</a>
+                        <a href="7day-safari.html">7 Dagars Safari</a>
+                    </div>
+                </li>
+                <li><a href="mount-meru.html">Mount Meru</a></li>
+                <li><a href="contact.html" class="contact-btn">Kontakta Oss</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+<section class="route-detail-hero">
+    <div class="hero-content">
+        <h1>Vanliga Frågor</h1>
+    </div>
+</section>
+
+<section class="itinerary-section">
+    <div class="itinerary-container">
+        <h2>Allt Du Behöver Veta</h2>
+
+        <div class="accordion">
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Behöver jag visum för att resa till Tanzania?</span>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Ja, om du anländer till Kilimanjaro International Airport har du möjlighet att ansöka om ditt visum personligen, men vi rekommenderar starkt att du ansöker om ditt visum innan du lämnar ditt ursprungsland.</p>
+                    <p>För mer information, besök www.eservices.immigration.go.tz/visa/guidelines eller ditt lands ambassad eller konsulat.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Ska jag teckna reseförsäkring innan min resa till Tanzania?</span>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Ja, vi rekommenderar starkt att du har adekvat reseförsäkring innan du lämnar ditt ursprungsland. Tänk på att du kommer att behöva tillhandahålla bevis på att du är fullt försäkrad över 6,000m innan din bergsklättring.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Vilka medicinska försiktighetsåtgärder behöver jag ta innan jag reser till Tanzania?</span>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Vi rekommenderar starkt att du besöker din läkare för att säkerställa att du har fått alla nödvändiga vaccinationer och försetts med korrekt malariamediciering. Observera att om du besöker en gula feberzonen kommer du att behöva visa ditt gula feberkort vid ankomst.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Hur mycket bör jag ge i dricks?</span>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Under en bergsklättring är det sed att ge dricks enligt följande minimum:</p>
+                    <p>• Guider = $20 per dag<br>• Kock = $15 per dag<br>• Bärare = $10 per dag</p>
+                    <p>Under en safari eller någon annan aktivitet är det sed att ge $10 per guide per person.</p>
+                    <p>Det finns ingen förväntan att ge dricks på restauranger, kaféer, taxitjänster eller boende om du inte känner att servicen förtjänar det.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Kan jag använda mitt kreditkort i Tanzania?</span>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Visa och Mastercard accepteras allmänt på de flesta restauranger, butiker och hotell inom de större städerna i Tanzania som Dar Es Salaam, Arusha, Moshi & Zanzibar, men det är god praxis att ha med sig lite kontanter. Diners Club och American Express kanske inte accepteras. Bevis på identifiering kan krävas när du betalar med kreditkort, så se till att alltid ha med dig någon form av fotolegitimation.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Hur mycket bagage kan jag ta med på en safari eller bergsklättring?</span>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Under din aktivitet kommer du att kunna ta med dig 15kg (33lb) bagage per person. Vissa hotell och loger kommer att förvara eventuellt ytterligare bagage du kan ha i ett låst förvaringsrum om det behövs. Kontrollera med ditt boende före avresan eftersom varje boende varierar.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Är kranvatten säkert att dricka i Tanzania?</span>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Nej, se till att du dricker flaskvatten.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Vad händer om jag har särskilda kostkrav?</span>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p>De flesta boenden och restauranger tillgodoser särskilda kostkrav. För resenärer som deltar i en safari eller klättrar på berget, vänligen meddela Solen om dina kostkrav och vi kommer att se till att dina kockar tillhandahåller en lämplig meny för dig.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Kommer jag att kunna komma åt en bankomat i Tanzania?</span>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Ja, bankomater finns i alla större stadscentra och köpcentra.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Kan Solen ordna mina flyg för mig?</span>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Ja, Solen kan ta hand om alla dina researrangemang från det ögonblick du lämnar din hemstad till den tid du återvänder.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Vilka adaptrar behöver jag ta med och vad är elspänningen?</span>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Tanzania använder den tre-stiftade brittiska kontakten. Elspänningen är 230V så bekräfta om du behöver en spänningsomvandlare innan du kopplar in några enheter.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Vilka kläder ska jag packa när jag reser till Tanzania?</span>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p>De mest praktiska plagg att packa för en tanzanisk safari är lätta bomullstoppar och bomullsbyxor eller shorts i khaki, brunt, vitt och beige. På grund av den höga höjden på kanten av Tanzanias Ngorongoro-krater är natttemperaturerna kalla även på sommaren. Resenärer till dessa regioner bör packa en fleece eller tröja, samt en varm jacka för viltvandringar.</p>
+                    <p>Badkläder är ett måste när du reser till kustområdena. Bekväma vandringsskor är viktiga för dem som planerar buskvandringar eller vandringssafaris.</p>
+                    <p>Gäster som har för avsikt att klättra på Mount Kilimanjaro bör packa termisk underkläder, lätta lager, en fleecetröja, regnkläder, snöutrustning, bra strumpor och stadiga vandringskängor. Se vår föreslagna packningslista på vår Mount Kilimanjaro-sida.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Är Tanzania en bra destination för att resa med barn?</span>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Ja, Tanzania välkomnar alla åldersgrupper. Många av Solens paket är lämpliga för barn, men observera att det finns åldersbegränsningar för vissa safari-viltvandringar. Solen kommer att se till att alla safaripaket är anpassade för att bäst passa din familjs behov.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Kommer jag att kunna få tillgång till internet?</span>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Ja, de flesta boenden tillhandahåller gratis wifi, men detta kan variera beroende på boende och plats.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Är det okej att ta foton i Tanzania?</span>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Som alltid är det artigt att vara känslig och be om tillstånd innan du fotograferar människor. I de flesta afrikanska länder (inklusive Tanzania) är det olagligt att ta foton av flygplatser och militära installationer.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Är Tanzania en bra destination för fågelskådning?</span>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Tanzania erbjuder exceptionell fågelskådning i olika destinationer, med inte bara ett utmärkt utbud av inhemska arter utan också ett stort antal migrerande fåglar.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Är Tanzania ett säkert land att besöka?</span>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Ja, tanzanier är välkända för sin varma gästfrihet mot besökare. Som med all resor är det en bra idé att ta standard försiktighetsåtgärder. Håll ditt pass och värdesaker nära till hands eller säkert inlåsta och lämna inte bagage utan tillsyn. Solen kommer gärna att tillhandahålla en guide för dagen om det behövs.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="contact-box">
+            <h3>Har du fler frågor?</h3>
+            <p>Kontakta oss om din fråga inte finns ovan</p>
+            <a href="/contact.html">Kontakta Oss</a>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer-content">
+        <img src="images/logo.png" alt="Solen Safaris" class="footer-logo">
+        <div class="footer-links">
+            <a href="/about-us.html">Om Oss</a>
+            <a href="/faq.html">FAQ</a>
+            <a href="/contact.html">Kontakta Oss</a>
+            <a href="/terms.html">Villkor</a>
+        </div>
+    </div>
+    <div class="footer-social">
+    <a href="https://www.instagram.com/yourusername" target="_blank" aria-label="Instagram">
+        <i class="bi bi-instagram"></i>
+    </a>
+
+    <a href="https://web.facebook.com/praygod.fadhili.3" target="_blank" aria-label="Facebook">
+        <i class="bi bi-facebook"></i>
+    </a>
+
+    <a href="https://x.com/yourusername" target="_blank" aria-label="X (Twitter)">
+        <i class="bi bi-twitter-x"></i>
+    </a>
+
+    <a href="https://wa.me/254712345678" target="_blank" aria-label="WhatsApp">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+
+    <a href="mailto:info@yourdomain.com" aria-label="Email">
+        <i class="bi bi-envelope-fill"></i>
+    </a>
+
+   <!-- <a href="https://www.youtube.com/@yourchannel" target="_blank" aria-label="YouTube">
+        <i class="bi bi-youtube"></i>
+    </a>-->
+</div>
+</footer>
+
+<!--<div class="fixed-language-selector">
+    <select id="language-select" onchange="translatePage(this.value)">
+        <option value="sv">🌐 Svenska</option>
+        <option value="en">English</option>
+    </select>
+</div>-->
+
+<script>
+    // Mobile menu
+    document.querySelector('.hamburger').addEventListener('click', () => {
+        document.querySelector('.nav-links').classList.toggle('active');
+    });
+
+    // Accordion toggle (allow multiple open - simple version)
+    document.querySelectorAll('.accordion-header').forEach(header => {
+        header.addEventListener('click', () => {
+            const item = header.parentElement;
+            item.classList.toggle('active');
+        });
+    });
+</script>
+
+</body>
+</html>

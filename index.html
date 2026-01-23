@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solen Safaris - Tanzania Äventyr</title>
+    
+    
+    <link rel="icon" type="image/png" href="images/favicon.jpg">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+       /* Navbar */
+        .navbar {
+            position: absolute;
+            top:0; left:0; width:100%; z-index:1000;
+            padding:24px 5vw;
+            background:rgba(0,0,0,0.4);
+            backdrop-filter:blur(6px);
+        }
+        .nav-container {
+            max-width:1400px; margin:0 auto;
+            display:flex; justify-content:space-between; align-items:center;
+        }
+        .logo img { height:68px; width:auto; }
+        .nav-links {
+            display:flex; list-style:none; gap:36px; align-items:center;
+        }
+        .nav-links a {
+            color:white; text-decoration:none; font-weight:500; font-size:1.05rem;
+            transition:var(--transition);
+        }
+        .nav-links a:hover { color:var(--primary); }
+        .contact-btn {
+            background:var(--primary); color:white !important;
+            padding:10px 26px; border-radius:8px;
+        }
+        .hamburger { display:none; flex-direction:column; gap:6px; cursor:pointer; }
+        .hamburger span { width:28px; height:3px; background:white; transition: all 0.3s ease; }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Navbar Dropdown Styles 
+        .nav-links .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: transparent;
+            min-width: 160px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            padding: 4px 0;
+            margin-top: 4px;
+            line-height: 1.2;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 3px 10px;
+            color: #2c3e50;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+            background: transparent;
+            white-space: nowrap;
+        }
+
+        .dropdown-menu a:hover {
+            color: var(--primary, #D4630F);
+            text-decoration: underline;
+        } */
+    
+    .dropdown-menu a {
+            display: block;
+            padding: 3px 10px;
+            color: #2c3e50;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+            background: transparent;
+            white-space: nowrap;
+        }
+        /* Mobile Dropdown */
+        @media (max-width: 768px) {
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                background: rgba(255,255,255,0.05);
+                margin: 0;
+                padding: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease;
+                border-radius: 0;
+            }
+            
+            .dropdown.active .dropdown-menu {
+                max-height: 500px;
+                padding: 5px 0;
+            }
+            
+            .dropdown-menu a {
+                padding: 12px 30px 12px 50px;
+                font-size:0.95rem;
+                color: rgba(255,255,255,0.85) !important;
+                border-bottom:1px solid rgba(255,255,255,0.05);
+            }
+            
+            .dropdown-menu a:hover {
+                color: white !important;
+                background: rgba(255,255,255,0.1);
+            }
+            
+            .dropdown-menu a:last-child {
+                border-bottom:none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width:992px) {
+            .nav-links {
+                display:none;
+                position:fixed;
+                top:0; 
+                left:0; 
+                width:70%;
+                max-width:350px;
+                height:auto;
+                max-height:85vh;
+                background:rgba(0,0,0,0.95);
+                flex-direction:column;
+                justify-content:flex-start;
+                align-items:stretch;
+                padding:80px 0 30px 0;
+                gap:0;
+                z-index:999;
+                overflow-y:auto;
+                transform:translateX(-100%);
+                transition:transform 0.3s ease;
+                border-radius:0 20px 20px 0;
+            }
+            
+            .nav-links.active { 
+                display:flex;
+                transform:translateX(0);
+            }
+            
+            .nav-links li {
+                width:100%;
+                text-align:left;
+                border-bottom:1px solid rgba(255,255,255,0.1);
+            }
+            
+            .nav-links > li > a {
+                display:block;
+                color:white !important;
+                font-size:1.1rem;
+                padding:18px 30px;
+                border:none;
+            }
+            
+            .contact-btn {
+                background:var(--primary);
+                border-radius:50px;
+                padding:14px 30px;
+                font-size:1rem;
+                margin:20px 30px;
+                text-align:center;
+            }
+            
+            .hamburger { 
+                display:flex; 
+                z-index:1001;
+            }
+            
+            /* Close button */
+            .nav-links::before {
+                content:'×';
+                position:absolute;
+                top:20px;
+                right:20px;
+                font-size:2.5rem;
+                color:white;
+                cursor:pointer;
+                width:40px;
+                height:40px;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+            }
+        }
+        /* Video Section */
+        .video-section {
+            padding: 0;
+            background: #000;
+            margin: 0;
+        }
+
+        .video-container {
+            max-width: 100%;
+            margin: 0 auto;
+            position: relative;
+            width: 100%;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            .video-container video {
+                height: 400px;
+                object-fit: cover;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .video-container video {
+                height: 300px;
+            }
+        }
+    .footer-social a {
+    display: inline-flex;
+    margin: 0 10px;
+    font-size: 26px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.footer-social a:hover {
+    transform: scale(1.2);
+    opacity: 0.85;
+}
+
+/* Brand colors */
+.bi-instagram { color: #E4405F; }
+.bi-facebook  { color: #1877F2; }
+.bi-whatsapp  { color: #25D366; }
+.bi-youtube   { color: #FF0000; }
+.bi-envelope-fill { color: #EA4335; }
+.bi-twitter-x { color: #000000; }
+
+    </style>
+</head>
+<body>
+    <!-- Hero Section with Navigation -->
+    <section class="hero">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="images/logo.png" alt="Solen Safaris">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="/index.html">Hem</a></li>
+                    <li class="dropdown">
+                        <a href="/kilimanjaro.html">Mount Kilimanjaro</a>
+                        <div class="dropdown-menu">
+                            <a href="/kilimanjaro.html">Om Mount Kilimanjaro</a>
+                            <a href="/machame-route.html">Machame Rutt</a>
+                            <a href="/marangu-route.html">Marangu Rutt</a>
+                            <a href="/lemosho-route.html">Lemosho Rutt</a>
+                            <a href="/umbwe-route.html">Umbwe Rutt</a>
+                            <a href="/rongai-route.html">Rongai Rutt</a>
+                            <a href="/northern-circuit-route.html">Northern Circuit Rutt</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="/safari.html">Safari Tours</a>
+                        <div class="dropdown-menu">
+                            <a href="/safari.html">Om Safariturer</a>
+                            <a href="/3day-safari.html">3 Dagars Safari</a>
+                            <a href="/4day-safari.html">4 Dagars Safari</a>
+                            <a href="/5day-safari.html">5 Dagars Safari</a>
+                            <a href="/7day-safari.html">7 Dagars Safari</a>
+                        </div>
+                    </li>
+                    <li><a href="/mount-meru.html">Mount Meru</a></li>
+                    <li><a href="/contact.html" class="contact-btn">Kontakta Oss</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Kliv in i vildmarken</h1>
+            <p class="hero-subtitle">Anslut dig till Solens erfarna och dedikerade team för att få den ultimata tanzaniska upplevelsen idag</p>
+        </div>
+    </section>
+
+    <!-- Intro Text -->
+    <section class="intro-section">
+        <div class="container">
+            <p class="intro-text">
+                Tanzania är hem för några av världens största naturlandskap, inklusive världens högsta fristående berg på 5 895 meter, Mount Kilimanjaro.
+            </p>
+            <p class="intro-text">
+                Detta vackra land är också hem för några av Afrikas största nationalparker och bevarandeområden, inklusive den berömda Serengeti nationalpark och Ngorongoro-kratern där du kommer att ha möjlighet att se de stora fem på nära håll.
+            </p>
+            <p class="intro-text">
+                Slappna av och varva ner i de kristallklara vattnen och vita sandstränderna och få möjlighet att bli introducerad till en av Tanzanias många spännande stammar.
+            </p>
+        </div>
+    </section>
+
+    <!-- Our Services -->
+    <section class="services-section">
+        <div class="container">
+            <h2 class="section-title">Våra Tjänster</h2>
+            
+            <div class="service-grid">
+                <!-- Mount Kilimanjaro -->
+                <div class="service-card" id="home">
+                    <div class="service-image-wrapper">
+                        <img src="images/kilimanjaro_elephants.jpeg" alt="Mount Kilimanjaro">
+                        <div class="service-overlay">
+                            <h3>Mount Kilimanjaro</h3>
+                            <button class="more-details-btn" onclick="window.location.href='kilimanjaro.html'">Mer Information</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Safari Tours -->
+                <div class="service-card" id="safari">
+                    <div class="service-image-wrapper">
+                        <img src="images/safari_breakfast.jpeg" alt="Safari Tours">
+                        <div class="service-overlay">
+                            <h3>Safari Tours</h3>
+                            <button class="more-details-btn" onclick="window.location.href='safari.html'">Mer Information</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mount Meru -->
+                <div class="service-card" id="meru">
+                    <div class="service-image-wrapper">
+                        <img src="images/mountain_sunrise.jpeg" alt="Mount Meru">
+                        <div class="service-overlay">
+                            <h3>Mount Meru</h3>
+                            <button class="more-details-btn" onclick="window.location.href='mount-meru.html'">Mer Information</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section"> 
+        <div class="about-images">
+            <div class="about-image-left">
+                <img src="images/tourists_maasai.jpeg" alt="Cultural Experience">
+            </div>
+            <div class="about-image-right">
+                <img src="images/maasai_village.jpeg" alt="Maasai Village">
+            </div>
+        </div>
+        <div class="about-content">
+            <h2>Om Oss</h2>
+            <p>Välkommen till Solen. Vi är ett berg- och safariföretag baserat i Tanzania, Afrika.</p>
+            <p>På Solen strävar vi efter att ge våra kunder en upplevelse de kommer att minnas i många år framöver. Vårt team är passionerat om resor, natur och friluftsliv. Våra guider är alla kvalificerade och var och en av dem har bestigt Kilimanjaro mer än 100 gånger.</p>
+            <p>Vi strävar efter att ge turister möjligheten i livet genom att utforska Tanzanias naturliga skönhet inklusive dess vilda djur, berg, stränder och det rika mångfalden av Tanzanias stammar och kulturer. Med oss blir ditt äventyr verkligen en oförglömlig resa.</p>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title">Testimonials</h2>
+            
+            <div class="testimonials-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-image-circle">
+                        <img src="images/tourists_maasai.jpeg" alt="Customer">
+                    </div>
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">"Praygod är en fantastisk person att vara med på Kilimanjaro, en otroligt duktig berättare…👍👏🥰👵🏻"</p>
+                        <p class="testimonial-author">Britt-Marie Andersson/p>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-image-circle">
+                        <img src="images/maasai_village.jpeg" alt="Summit Success">
+                    </div>
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">"Kan varmt rekommendera denna guide om ni vill vandra Kilimanjaro"</p>
+                        <p class="testimonial-author">Anne Larsson</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section">
+        <div class="video-container">
+            <video controls autoplay muted loop playsinline>
+                <source src="images/mchome.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="footer-content">
+            <div class="footer-left">
+                <img src="images/logo.png" alt="Solen Safaris" class="footer-logo">
+            </div>
+            <div class="footer-links">
+                <a href="/about-us.html">Om Oss</a>
+                <a href="/faq.html">FAQ</a>
+                <a href="/contact.html">Kontakta Oss</a>
+                <a href="/terms">Villkor</a>
+            </div>
+        </div>
+       <div class="footer-social">
+    <a href="https://www.instagram.com/yourusername" target="_blank" aria-label="Instagram">
+        <i class="bi bi-instagram"></i>
+    </a>
+
+    <a href="https://web.facebook.com/praygod.fadhili.3" target="_blank" aria-label="Facebook">
+        <i class="bi bi-facebook"></i>
+    </a>
+
+    <a href="https://x.com/yourusername" target="_blank" aria-label="X (Twitter)">
+        <i class="bi bi-twitter-x"></i>
+    </a>
+
+    <a href="https://wa.me/254712345678" target="_blank" aria-label="WhatsApp">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+
+    <a href="mailto:info@yourdomain.com" aria-label="Email">
+        <i class="bi bi-envelope-fill"></i>
+    </a>
+
+   <!-- <a href="https://www.youtube.com/@yourchannel" target="_blank" aria-label="YouTube">
+        <i class="bi bi-youtube"></i>
+    </a>-->
+</div>
+    </footer>
+
+    <!-- Fixed Language Selector
+    <div class="fixed-language-selector">
+        <select id="language-select" onchange="translatePage(this.value)">
+            <option value="sv">🌐 Svenska</option>
+            <option value="en">English</option>
+            <option value="ar">العربية</option>
+            <option value="zh-Hans">中文</option>
+            <option value="cs">Čeština</option>
+            <option value="da">Dansk</option>
+            <option value="nl">Nederlands</option>
+            <option value="fi">Suomi</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+            <option value="el">Ελληνικά</option>
+            <option value="hu">Magyar</option>
+            <option value="id">Bahasa Indonesia</option>
+            <option value="it">Italiano</option>
+            <option value="ja">日本語</option>
+            <option value="ko">한국어</option>
+            <option value="no">Norsk</option>
+            <option value="pl">Polski</option>
+            <option value="pt">Português</option>
+            <option value="ro">Română</option>
+            <option value="ru">Русский</option>
+            <option value="es">Español</option>
+        </select>
+    </div> -->
+    <script>
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    const dropdowns = document.querySelectorAll('.dropdown');
+
+    // Toggle mobile menu
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+
+    // Close menu when clicking X (::before pseudo element area)
+    navLinks.addEventListener('click', (e) => {
+        const rect = navLinks.getBoundingClientRect();
+        const closeButtonArea = {
+            left: rect.right - 60,
+            right: rect.right - 20,
+            top: rect.top + 20,
+            bottom: rect.top + 60
+        };
+        
+        if (e.clientX >= closeButtonArea.left && e.clientX <= closeButtonArea.right &&
+            e.clientY >= closeButtonArea.top && e.clientY <= closeButtonArea.bottom) {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+            dropdowns.forEach(dropdown => dropdown.classList.remove('active'));
+        }
+    });
+
+    // Mobile dropdown toggle - prevent redirect and show submenu
+    dropdowns.forEach(dropdown => {
+        const mainLink = dropdown.querySelector('a');
+        
+        mainLink.addEventListener('click', (e) => {
+            // On mobile, prevent redirect and toggle dropdown
+            if (window.innerWidth <= 992) {
+                e.preventDefault();
+                dropdown.classList.toggle('active');
+            }
+        });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+            dropdowns.forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
+        }
+    });
+    
+    // Close menu when clicking dropdown link
+    document.querySelectorAll('.dropdown-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+            dropdowns.forEach(dropdown => dropdown.classList.remove('active'));
+        });
+    });
+    </script>
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rongai Rutt - Solen Safaris</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/route-detail-style.css">
+    <!-- NAVBAR CSS MUST BE LAST -->
+    <link rel="stylesheet" href="css/navbar.css">
+    <style>
+        .footer-social a {
+    display: inline-flex;
+    margin: 0 10px;
+    font-size: 26px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.footer-social a:hover {
+    transform: scale(1.2);
+    opacity: 0.85;
+}
+
+/* Brand colors */
+.bi-instagram { color: #E4405F; }
+.bi-facebook  { color: #1877F2; }
+.bi-whatsapp  { color: #25D366; }
+.bi-youtube   { color: #FF0000; }
+.bi-envelope-fill { color: #EA4335; }
+.bi-twitter-x { color: #000000; }
+    </style>
+</head>
+<body>
+    <!-- Fixed Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="Solen Safaris">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Hem</a></li>
+                <li class="dropdown">
+                    <a href="kilimanjaro.html">Mount Kilimanjaro</a>
+                    <div class="dropdown-menu">
+                        <a href="kilimanjaro.html">Om Mount Kilimanjaro</a>
+                        <a href="machame-route.html">Machame Rutt</a>
+                        <a href="marangu-route.html">Marangu Rutt</a>
+                        <a href="lemosho-route.html">Lemosho Rutt</a>
+                        <a href="umbwe-route.html">Umbwe Rutt</a>
+                        <a href="rongai-route.html">Rongai Rutt</a>
+                        <a href="northern-circuit-route.html">Northern Circuit Rutt</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="safari.html">Safari Turer</a>
+                    <div class="dropdown-menu">
+                        <a href="safari.html">Om Safariturer</a>
+                        <a href="3day-safari.html">3 Dagars Safari</a>
+                        <a href="4day-safari.html">4 Dagars Safari</a>
+                        <a href="5day-safari.html">5 Dagars Safari</a>
+                        <a href="7day-safari.html">7 Dagars Safari</a>
+                    </div>
+                </li>
+                <li><a href="mount-meru.html">Mount Meru</a></li>
+                <li><a href="contact.html" class="contact-btn">Kontakta Oss</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="route-detail-hero">
+        <img src="images/stella.jpeg" alt="Rongai Rutt" class="hero-bg">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Rongai Rutt</h1>
+        </div>
+    </section>
+
+    <!-- Route Description Section -->
+    <section class="route-intro-section">
+        <div class="intro-container">
+            <div class="intro-image">
+                <img src="images/hill.jpeg" alt="Rongai Rutt">
+            </div>
+            <div class="intro-text">
+                <p>Rongai-rutten är perfekt för klättrare som letar efter ett alternativ till Marangu-rutten eftersom den har mycket mindre fottrafik. Rongai är det bästa alternativet under regnperioden på grund av dess läge, som får lite regn. Vi rekommenderar 7 dagar för bättre acklimatisering och framgång vid toppen. Denna rutt ger en unik möjlighet för vandrare som vill uppleva Mount Kilimanjaro i en tystare miljö medan de fortfarande njuter av dess extraordinära skönhet.</p>
+                <button class="book-climb-btn" onclick="openBookingForm()">Boka din klättring</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Itinerary Section -->
+    <section class="itinerary-section">
+        <div class="itinerary-container">
+            <h2>Resplan</h2>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Ankomstdag</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Vid ankomst till Kilimanjaro International Airport kommer du att mötas av en Solen-representant som kommer att ta dig till ditt hotell. Där får du tid att slå dig ner innan ett möte med dina guider. Vid detta möte kommer vi att informera dig om vad du kan förvänta dig på Mount Kilimanjaro och svara på eventuella sista minuten frågor du kan ha. Efter genomgången rekommenderar vi en tidig kväll för en tidig upphämtning följande dag.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Dag 1 | Rongai Gate till Simba Camp</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Efter frukost hämtas du från ditt hotell runt 8:00 och du kommer att köras till Rongai Gate som ligger på norra sidan av Mount Kilimanjaro. Efter registreringsprocessen börjar vi vår klättring stadigt genom skogarna till kanten av hedmarkszonen för att nå Simba Camp där du kommer att spendera natten. Under middagen kommer du att bli briefad för följande dag av din huvudguide.</p>
+                        <p><strong>Höjd:</strong> 1,950m (6,398ft) till 2,830m (9,300ft)</p>
+                        <p><strong>Distans:</strong> 8km (5 miles)</p>
+                        <p><strong>Vandring tid:</strong> 4-5 timmar</p>
+                        <p><strong>Vegetationszon:</strong> Regnskog</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Dag 2 | Simba Camp till 2nd Cave Camp</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Dagens vandring är en stadig uppstigning upp till Second Cave Camp som ligger i hedmarkszonen med utsikt över Kibo och de östra isfälten på kraterkanten. Under middagen kommer du att bli briefad för följande dag av din huvudguide.</p>
+                        <p><strong>Höjd:</strong> 2,830m (9,300ft) till 3,450m (11,300ft)</p>
+                        <p><strong>Distans:</strong> 5km (3 miles)</p>
+                        <p><strong>Vandring tid:</strong> 3-4 timmar</p>
+                        <p><strong>Vegetationszon:</strong> Regnskog</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Dag 3 | 2nd Camp till Kikelewa Camp</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Vi fortsätter att få höjd idag när vi vandrar mot Kikelewa Camp med utsikt över de östra isfälten på kraterkanten av Kibo, den högsta av de tre vulkanerna som bildar berget. Vi lämnar huvudspåret och slår ut över hedmarken på en mindre väg mot de taggiga topparna av Mawenzi, den andra av Kilimanjaros vulkaner. Under middagen kommer du att bli briefad för följande dag av din huvudguide.</p>
+                        <p><strong>Höjd:</strong> 3,450m (11,300ft) till 3,600m (11,811ft)</p>
+                        <p><strong>Distans:</strong> 5km (3 miles)</p>
+                        <p><strong>Vandring tid:</strong> 4-6 timmar</p>
+                        <p><strong>Vegetationszon:</strong> Regnskog och låg alpin</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Dag 4 | Kikelewa Camp till Mawenzi Tarn Hut</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Dagens vandring till Mawenzi Tarn Camp är en brant klättring men ger magnifika vyer av de kenyanska slätterna i norr. När vi når lägret kommer vi att ha en tvåtimmars vila, varefter det kommer att finnas en acklimatiseringsvandring mot Mawenzi-vulkanen med en 200m höjdvinst. Under middagen kommer du att bli briefad för följande dag av din huvudguide.</p>
+                        <p><strong>Höjd:</strong> 3,600m (11,811ft) till 4,315m (14,160ft)</p>
+                        <p><strong>Distans:</strong> 8km (5 miles)</p>
+                        <p><strong>Vandring tid:</strong> 4-5 timmar</p>
+                        <p><strong>Vegetationszon:</strong> Regnskog och låg alpin</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Dag 5 | Mawenzi Tarn Hut till Kibo Hut</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Idag lämnar vi vårt läger och korsar månöken av 'sadeln' mellan Mawenzi Tarn och Kibo Hut. När vi når Kibo Hut får du en tidig middag. Vi rekommenderar vila och sömn innan du väcks klockan 23:00 för att förbereda för toppklättringen. Under middagen kommer du att bli briefad för följande dag av din huvudguide.</p>
+                        <p><strong>Höjd:</strong> 4,315m (14,160ft) till 4,703m (15,430ft)</p>
+                        <p><strong>Distans:</strong> 8km (5 miles)</p>
+                        <p><strong>Vandring tid:</strong> 5-6 timmar</p>
+                        <p><strong>Vegetationszon:</strong> Låg alpin</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Dag 6 | Kibo Hut till Uhuru Peak till Horombo Hut (Toppdag)</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Vi börjar toppklättringen vid midnatt och går brant uppåt mot toppglaciärerna. Vi kommer att klättra långsamt men få otrolig höjd över en kort distans och passera Hans Meyer Cave på 5220m. Vi når Gillman's Point (5,681m) när de första solstrålarna börjar visa sig. Här tar vi en kort paus för att titta på soluppgången över Afrika. Vi fortsätter i ytterligare 1-2 timmar upp till toppen, Uhuru Peak (5895m). Vi börjar vår nedstigning tillbaka till Kibo Hut för frukost. Efter en kort vila fortsätter du att gå ner till Horombo Hut för en lång välförtjänt vila.</p>
+                        <p><strong>Höjd:</strong> 4,703m (15,430ft) till 5895m (19,341ft) till 3,720m (12,205ft)</p>
+                        <p><strong>Distans:</strong> 16km (9.6 miles)</p>
+                        <p><strong>Vandring tid:</strong> 13-15 timmar</p>
+                        <p><strong>Vegetationszon:</strong> Glaciär, hög alpin och låg alpin</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Dag 7 | Horombo Hut till Marangu Gate</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>På den sista dagen fortsätter vi genom regnskogen tills vi når Marangu Gate, där vi slutför parkformaliteterna och presenterar dig med ett certifikat som bekräftar att du besteg Mount Kilimanjaro. Vi möts sedan av våra fordon och överförs tillbaka till ditt hotell för en välförtjänt vila och firande med dina guider.</p>
+                        <p><strong>Höjd:</strong> 3,720m (12,205ft) till 1,843m (6,046ft)</p>
+                        <p><strong>Distans:</strong> 20km (12.5 miles)</p>
+                        <p><strong>Vandring tid:</strong> 6-8 timmar</p>
+                        <p><strong>Vegetationszon:</strong> Låg alpin och regnskog</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Sista dagen</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Efter frukost kommer ett fordon att överföra dig till din nästa destination. Om du har extra tid rekommenderar vi att du förlänger din vistelse. Solen erbjuder safaripaket för att se naturen när den är som bäst eller kanske en avslappnande strandresa till Zanzibar.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Table Section -->
+    <section class="pricing-section">
+        <div class="pricing-container">
+            <h2>Rongai klättring (inkl. 2 nätter hotellvistelse)</h2>
+            <h3>Pris per person</h3>
+            
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>1 Pers</th>
+                        <th>2 Pers</th>
+                        <th>3 Pers</th>
+                        <th>4 Pers</th>
+                        <th>5 Pers</th>
+                        <th>6 Pers</th>
+                        <th>7 Pers</th>
+                        <th>8+ Pers</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Rongai Rutt 7-dagar</td>
+                        <td>SEK39,000</td>
+                        <td>SEK31,000</td>
+                        <td>SEK27,500</td>
+                        <td>SEK26,200</td>
+                        <td>SEK26,000</td>
+                        <td>SEK25,400</td>
+                        <td>SEK25,000</td>
+                        <td>SEK24,800</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <button class="book-climb-btn" onclick="openBookingForm()">Boka din klättring</button>
+        </div>
+    </section>
+
+    <!-- Inclusions & Exclusions Section -->
+    <section class="inclusions-section">
+        <div class="inclusions-container">
+            <div class="inclusions-image">
+                <img src="images/cloud.jpeg" alt="Berglandskap">
+            </div>
+            <div class="inclusions-text">
+                <h2>Inkluderingar & Exkluderingar</h2>
+                
+                <div class="inclusions-block">
+                    <h3>Inkluderingar</h3>
+                    <p>Flygplatstransfer från Kilimanjaro International Airport till logi (retur).</p>
+                    <p>Halvpension logi 1 natt före Mount Kilimanjaro klättringen börjar och 1 natt efter Mount Kilimanjaro klättringen (detta inkluderar måltider och skatter som krävs).</p>
+                    <p>Överföringsavgifter från logierna till Mount Kilimanjaro ingångsgrind (dag 1) och överföring från Mount Kilimanjaro utgångsgrind tillbaka till logierna (dag 7).</p>
+                    <p>Alla Mount Kilimanjaro parkavgifter (som krävs enligt tanzanisk lag).</p>
+                    <p>Alla löner för guider, kockar och bärare på bergsklättringen.</p>
+                    <p>Utrustningskostnader, inklusive tält (delning av två), campingmattor, matsalstält, kökstält, stolar, bord och matredskap.</p>
+                    <p>Privat toalettuthyrning (rekommenderas. Offentliga toaletter tillhandahålls på berget, men de används av alla och är dina vanliga camping drop toaletter).</p>
+                    <p>Mat på berget (3 måltider per person per dag, exklusive frukost dag 1, som tillhandahålls av logiet, och middag dag 7, som återigen tillhandahålls av logiet).</p>
+                </div>
+
+                <div class="exclusions-block">
+                    <h3>Exkluderingar</h3>
+                    <p>Internationella flygbiljetter från ditt ursprung till Kilimanjaro International Airport.</p>
+                    <p>Visum krav avgifter som krävs enligt tanzanisk lag (Du kan ansöka om visum på Kilimanjaro International Airport, men vi föreslår att du får förgodkännelse eftersom det går snabbare vid ankomst).</p>
+                    <p>Reseförsäkring: Se till att din försäkring täcker bergsklättring upp till 6 000 meter.</p>
+                    <p>Eventuella för-medicinska krav (inklusive eventuella nödvändiga Covid-tester).</p>
+                    <p>Dricks för guider, kockar och bärare. Vi rekommenderar att tipsa guiderna $20 per dag vardera, kocken $15 per dag och bärarna $10 per dag; men känn dig fri att tipsa hur du ser lämpligt.</p>
+                    <p>Om du är intresserad av att äta utanför din logi under din vistelse i Arusha city, kommer du att behöva täcka denna kostnad.</p>
+                    <p>Alla spenderande pengar. Vi kommer att stanna på flera platser för att ge dig möjlighet att köpa souvenirer.</p>
+                    <p>Om du är intresserad av att dricka under din vistelse, är alkohol en extra kostnad liksom alla drycker som beställs på lounge baren.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packing List Section -->
+    <section class="packing-section">
+        <div class="packing-container">
+            <div class="packing-image">
+                <img src="images/tophill.jpeg" alt="Bergvy">
+            </div>
+            <div class="packing-text">
+                <h2>Solens Föreslagna Packningslista</h2>
+                <p>Att ha rätt utrustning för att klättra på ett berg är avgörande för att säkerställa säkerhet och förbättra den övergripande upplevelsen. Korrekt skodon, såsom robusta vandringskängor, ger nödvändigt stöd och grepp på varierande terräng, medan väderlämpliga kläder skyddar mot elementen och håller klättrare varma och torra. Viktiga utrustningar, inklusive hjälm, sele och klätterrep, kan förhindra olyckor och skador. Dessutom är rätt navigeringsverktyg och första hjälpen-förnödenheter avgörande för att svara på oväntade situationer i avlägsna miljöer.</p>
+                <p>Att investera i kvalitetsutrustning bidrar inte bara till en framgångsrik uppstigning utan främjar också en känsla av självförtroende och beredskap för klättrare som vågar sig in i utmanande landskap.</p>
+                <button class="download-btn">Ladda ner PDF här</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Form Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeBookingForm()">&times;</span>
+            <h2>Rongai Rutt</h2>
+            <form id="bookingForm" onsubmit="handleBookingSubmit(event)">
+                <div class="form-group">
+                    <label>Antal dagar <span class="required">(obligatorisk)</span></label>
+                    <select name="days" required>
+                        <option value="">Välj ett alternativ</option>
+                        <option value="7">7 dagar</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Antal personer <span class="required">(obligatorisk)</span></label>
+                    <input type="number" name="people" min="1" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Förnamn <span class="required">(obligatorisk)</span></label>
+                        <input type="text" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Efternamn <span class="required">(obligatorisk)</span></label>
+                        <input type="text" name="lastName" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>E-post <span class="required">(obligatorisk)</span></label>
+                    <input type="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Bekräfta e-post <span class="required">(obligatorisk)</span></label>
+                    <input type="email" name="confirmEmail" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Önskat datum</label>
+                    <input type="date" name="date">
+                </div>
+
+                <div class="form-group">
+                    <label>Meddelande <span class="required">(obligatorisk)</span></label>
+                    <textarea name="message" rows="6" required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Skicka</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <img src="images/logo.png" alt="Solen Safaris" class="footer-logo">
+            </div>
+            <div class="footer-links">
+                <a href="/about-us.html">Om Oss</a>
+                <a href="/faq.html">FAQ</a>
+                <a href="/contact.html">Kontakta Oss</a>
+                <a href="/terms.html">Villkor</a>
+            </div>
+        </div>
+       <div class="footer-social">
+    <a href="https://www.instagram.com/yourusername" target="_blank" aria-label="Instagram">
+        <i class="bi bi-instagram"></i>
+    </a>
+
+    <a href="https://web.facebook.com/praygod.fadhili.3" target="_blank" aria-label="Facebook">
+        <i class="bi bi-facebook"></i>
+    </a>
+
+    <a href="https://x.com/yourusername" target="_blank" aria-label="X (Twitter)">
+        <i class="bi bi-twitter-x"></i>
+    </a>
+
+    <a href="https://wa.me/254712345678" target="_blank" aria-label="WhatsApp">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+
+    <a href="mailto:info@yourdomain.com" aria-label="Email">
+        <i class="bi bi-envelope-fill"></i>
+    </a>
+</div>
+    </footer>
+
+    <!-- Fixed Language Selector
+    <div class="fixed-language-selector">
+        <select id="language-select" onchange="translatePage(this.value)">
+            <option value="sv">🌐 Svenska</option>
+            <option value="en">English</option>
+        </select>
+    </div> -->
+
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("szRI9NE39riHh2l8G");
+        })();
+    </script>
+
+    <script src="js/navbar.js"></script>
+    <script src="js/route-detail-script.js"></script>
+</body>
+</html>

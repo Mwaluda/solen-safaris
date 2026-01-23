@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safari Turer - Solen Safaris Tanzania</title>
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Safari Page Specific Styles */
+        .safari-hero {
+            height: 70vh;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .safari-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .safari-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .safari-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .safari-hero h2 {
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 15px;
+        }
+
+        .safari-hero h3 {
+            font-size: 1.3rem;
+            font-weight: 400;
+        }
+
+        .intro-section {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .intro-section p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .parks-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .park-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 80px;
+            align-items: center;
+        }
+
+        .park-item:nth-child(even) {
+            direction: rtl;
+        }
+
+        .park-item:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .park-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .park-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .park-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .comfort-levels-section {
+            background: #f5f5f5;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .comfort-levels-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: #333;
+        }
+
+        .comfort-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .comfort-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .comfort-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .comfort-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .comfort-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .packages-section {
+            padding: 80px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .packages-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #333;
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .package-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 500px;
+        }
+
+        .package-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+        }
+
+        .package-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .package-card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.5));
+        }
+
+        .package-card-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: white;
+        }
+
+        .package-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin: 0;
+            color: white;
+            font-weight: 400;
+        }
+
+        .package-card-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .package-price-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .package-price-label {
+            font-size: 1.1rem;
+            color: white;
+            margin-bottom: 5px;
+            font-weight: 300;
+        }
+
+        .package-price {
+            font-size: 2.2rem;
+            color: white;
+            font-weight: 600;
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+
+        .package-per-person {
+            font-size: 1rem;
+            color: white;
+            font-weight: 300;
+        }
+
+        .package-card .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: transparent;
+            color: white;
+            text-decoration: none;
+            border: 2px solid white;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            font-weight: 400;
+        }
+
+        .package-card .btn:hover {
+            background: white;
+            color: #333;
+        }
+
+        .custom-safari-section {
+            padding: 80px 20px;
+            background: #f9f9f9;
+        }
+
+        .custom-safari-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .custom-safari-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .custom-safari-content {
+            max-width: 600px;
+        }
+
+        .custom-safari-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        .custom-safari-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        .custom-safari-content .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: white;
+            color: #333;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-weight: 500;
+        }
+
+        .custom-safari-content .btn:hover {
+            background: #333;
+            color: white;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            overflow-y: auto;
+        }
+
+        .modal.show {
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 20px auto;
+            padding: 0;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        .modal-header {
+            padding: 25px 30px;
+            background: #f5f5f5;
+            color: #333;
+            border-radius: 12px 12px 0 0;
+            position: relative;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #333;
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            color: #333;
+            font-size: 32px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: #666;
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .required {
+            color: #d4a574;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: 'Lato', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2c5f2d;
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: auto;
+            margin-right: 8px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: white;
+            color: #333;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #333;
+            color: white;
+            border-color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .safari-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .safari-hero h2 {
+                font-size: 1.3rem;
+            }
+
+            .park-item {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .park-item:nth-child(even) {
+                direction: ltr;
+            }
+
+            .comfort-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .packages-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .custom-safari-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .custom-safari-image {
+                height: 300px;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 10px auto;
+            }
+
+            .modal-body {
+                padding: 20px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .checkbox-group {
+                grid-template-columns: 1fr;
+            }
+        }
+
+/* Video Section */
+.video-section {
+    padding: 0;
+    background: #000;
+    margin: 0;
+}
+
+.video-container {
+    width: 100%;
+    height: 450px;   /* 👈 reduce height here */
+    position: relative;
+    overflow: hidden;
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    .video-container {
+        height: 320px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .video-container {
+        height: 220px;
+    }
+}
+
+    .footer-social a {
+    display: inline-flex;
+    margin: 0 10px;
+    font-size: 26px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.footer-social a:hover {
+    transform: scale(1.2);
+    opacity: 0.85;
+}
+
+/* Brand colors */
+.bi-instagram { color: #E4405F; }
+.bi-facebook  { color: #1877F2; }
+.bi-whatsapp  { color: #25D366; }
+.bi-youtube   { color: #FF0000; }
+.bi-envelope-fill { color: #EA4335; }
+.bi-twitter-x { color: #000000; }
+
+
+/* Navbar */
+        .navbar {
+            position: absolute;
+            top:0; left:0; width:100%; z-index:1000;
+            padding:24px 5vw;
+            background:rgba(0,0,0,0.4);
+            backdrop-filter:blur(6px);
+        }
+        .nav-container {
+            max-width:1400px; margin:0 auto;
+            display:flex; justify-content:space-between; align-items:center;
+        }
+        .logo img { height:68px; width:auto; }
+        .nav-links {
+            display:flex; list-style:none; gap:36px; align-items:center;
+        }
+        .nav-links a {
+            color:white; text-decoration:none; font-weight:500; font-size:1.05rem;
+            transition:var(--transition);
+        }
+        .nav-links a:hover { color:var(--primary); }
+        .contact-btn {
+            background:var(--primary); color:white !important;
+            padding:10px 26px; border-radius:8px;
+        }
+        .hamburger { display:none; flex-direction:column; gap:6px; cursor:pointer; }
+        .hamburger span { width:28px; height:3px; background:white; transition: all 0.3s ease; }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Navbar Dropdown Styles */
+        .nav-links .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: transparent;
+            min-width: 160px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            padding: 4px 0;
+            margin-top: 4px;
+            line-height: 1.2;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 3px 10px;
+            color: #2c3e50;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+            background: transparent;
+            white-space: nowrap;
+        }
+
+        .dropdown-menu a:hover {
+            color: var(--primary, #D4630F);
+            text-decoration: underline;
+        }
+
+        /* Mobile Dropdown */
+        @media (max-width: 768px) {
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                background: rgba(255,255,255,0.05);
+                margin: 0;
+                padding: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease;
+                border-radius: 0;
+            }
+            
+            .dropdown.active .dropdown-menu {
+                max-height: 500px;
+                padding: 5px 0;
+            }
+            
+            .dropdown-menu a {
+                padding: 12px 30px 12px 50px;
+                font-size:0.95rem;
+                color: rgba(255,255,255,0.85) !important;
+                border-bottom:1px solid rgba(255,255,255,0.05);
+            }
+            
+            .dropdown-menu a:hover {
+                color: white !important;
+                background: rgba(255,255,255,0.1);
+            }
+            
+            .dropdown-menu a:last-child {
+                border-bottom:none;
+            }
+        }
+
+/* Responsive */
+        @media (max-width:992px) {
+            .nav-links {
+                display:none;
+                position:fixed;
+                top:0; 
+                left:0; 
+                width:70%;
+                max-width:350px;
+                height:auto;
+                max-height:85vh;
+                background:rgba(0,0,0,0.95);
+                flex-direction:column;
+                justify-content:flex-start;
+                align-items:stretch;
+                padding:80px 0 30px 0;
+                gap:0;
+                z-index:999;
+                overflow-y:auto;
+                transform:translateX(-100%);
+                transition:transform 0.3s ease;
+                border-radius:0 20px 20px 0;
+            }
+            
+            .nav-links.active { 
+                display:flex;
+                transform:translateX(0);
+            }
+            
+            .nav-links li {
+                width:100%;
+                text-align:left;
+                border-bottom:1px solid rgba(255,255,255,0.1);
+            }
+            
+            .nav-links > li > a {
+                display:block;
+                color:white !important;
+                font-size:1.1rem;
+                padding:18px 30px;
+                border:none;
+            }
+            
+            .contact-btn {
+                background:var(--primary);
+                border-radius:50px;
+                padding:14px 30px;
+                font-size:1rem;
+                margin:20px 30px;
+                text-align:center;
+            }
+            
+            .hamburger { 
+                display:flex; 
+                z-index:1001;
+            }
+            
+            /* Close button */
+            .nav-links::before {
+                content:'×';
+                position:absolute;
+                top:20px;
+                right:20px;
+                font-size:2.5rem;
+                color:white;
+                cursor:pointer;
+                width:40px;
+                height:40px;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Fixed Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Solen Safaris">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Hem</a></li>
+                <li><a href="kilimanjaro.html">Mount Kilimanjaro</a></li>
+                <li><a href="safari.html">Safari Turer</a></li>
+                <li><a href="index.html#meru">Mount Meru</a></li>
+                <li><a href="index.html#contact" class="contact-btn">Kontakta Oss</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="safari-hero" style="background-image: url('images/lion.jpeg');">
+        <div class="safari-hero-content">
+            <h1>Tanzaniska Safari Turer</h1>
+            <h2>Upptäck Tanzanias naturliga landskap</h2>
+            <h3>Ta ett steg in i vildmarken med Solen</h3>
+        </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="intro-section">
+        <p>Tanzania är hem för några av världens mest kända safari-destinationer, inklusive den berömda Serengeti National Park, som ofta listas bland de 5 bästa safarierna i världen. Med en mängd olika platser att besöka kan du vara säker på att du kommer att möta några av Tanzanias mest älskade vilda djur.</p>
+    </section>
+
+    <!-- National Parks Section -->
+    <section class="parks-section">
+        <div class="park-item">
+            <img src="images/tembo.jpeg" alt="Tarangire National Park" class="park-image">
+            <div class="park-content">
+                <h2>Tarangire Nationalpark</h2>
+                <p>Belägen i Tanzanias Manyara-region är Tarangire National Park en 2-timmars bilfärd från Arusha stad.</p>
+                <p>Parken får sitt namn från Tarangire-floden som rinner över reservatet och fungerar som det huvudsakliga vattenhålet, särskilt under torrperioden.</p>
+                <p>Tarangire National Park är ett utmärkt resmål för ivriga fågelskådare eftersom den är hem för över 550 fågelarter. Parken är också hem för det största antalet elefanter i Tanzania tillsammans med andra vilda djur som giraffer, gnuer, geparder, zebror och gaseller.</p>
+                <p>Tarangire National Park erbjuder också guidade vandringsvandring som ger möjlighet att komma nära de berömda baobab- och acaciaträden.</p>
+            </div>
+        </div>
+
+        <div class="park-item">
+            <img src="images/hippo.jpeg" alt="Ngorongoro Crater" class="park-image">
+            <div class="park-content">
+                <h2>Ngorongoro-kratern</h2>
+                <p>Ngorongoro-kratern, ofta kallad "Edens trädgård", är världens största vulkaniska caldera och ligger 4 timmar från Arusha stad.</p>
+                <p>Ngorongoro-kratern är platsen för några av Tanzanias mest pittoreska vyer tillsammans med ett brett utbud av vilda djur inklusive de stora 5 (lejon, leopard, elefant, buffel och noshörning).</p>
+                <p>Förutom de stora 5 kan du förvänta dig att se zebror, flamingos, flodhästar, hyenor, gnuer och många fler.</p>
+                <p>Naturvårdsparken är inte bara hem för vilda djur. Ungefär 40 000 Masai bor inom parken och kan hittas under körningen ner till kratergolvet.</p>
+            </div>
+        </div>
+
+        <div class="park-item">
+            <img src="images/beast.jpeg" alt="Serengeti National Park" class="park-image">
+            <div class="park-content">
+                <h2>Serengeti Nationalpark</h2>
+                <p>Serengeti National Park är hem för den stora vandringen där hundratals gnuer korsar Mara-floden in i Kenya mellan juli och augusti varje år.</p>
+                <p>Nationalparken är listad som ett världsarv av UNESCO och sträcker sig över 15 000 kvadratkilometer.</p>
+                <p>Serengeti National Park är hem för över 2 miljoner vilda djur inklusive lejon, geparder, leoparder, giraffer, elefanter, flodhästar plus över 500 fågelarter.</p>
+                <p>Förutom viltvandringar erbjuder nationalparken också ytterligare aktiviteter inklusive varmluftsballongfärder, gepardvandringar och stambesök. Alla aktiviteter kan organiseras genom Solen.</p>
+            </div>
+        </div>
+
+        <div class="park-item">
+            <img src="images/hipo.jpeg" alt="Lake Manyara National Park" class="park-image">
+            <div class="park-content">
+                <h2>Lake Manyara Nationalpark</h2>
+                <p>Belägen mellan Lake Manyara och den stora riftdalen är Lake Manyara National Park. Listad som den sjunde största sjön i Tanzania som sträcker sig över 470 kvadratkilometer.</p>
+                <p>Denna nationalpark är känd för sina trädklättrande lejon, de stora elefanthjordarna och många flamingos som kantar kanten av Lake Manyara.</p>
+                <p>I likhet med Tarangire National Park är Lake Manyara National Park ett måste för fågelskådare eftersom parken är hem för över 400 fågelarter.</p>
+            </div>
+        </div>
+
+        <div class="park-item">
+            <img src="images/hippo.jpeg" alt="Lake Eyasi" class="park-image">
+            <div class="park-content">
+                <h2>Lake Eyasi</h2>
+                <p>Lake Eyasi är en säsongsbetonad saltsjö som ligger på golvet av den stora riftdalen. Under Tanzanias torrperiod torkar sjön ut så de omgivande vilda djuren samlas nära den lilla mängden vatten som finns kvar. Detta gör det lättare för vilda djur att se för resenärer.</p>
+                <p>Lake Eyasi erbjuder fantastiska extra aktiviteter som vandringsvandring antingen halvdag eller heldag eller chansen att gå på en jaktresa med Hadzabe-stammen.</p>
+            </div>
+        </div>
+
+        <div class="park-item">
+            <img src="images/falcon.jpeg" alt="Lake Natron" class="park-image">
+            <div class="park-content">
+                <h2>Lake Natron</h2>
+                <p>Belägen på gränsen till Kenya är Lake Natron. Sjön är Tanzanias mest hypersalina och alkaliska sjö vilket gör vattnet ljusrött. Som ett resultat av de alkaliska nivåerna sitter vattnet på cirka 40°C - 60°C (104°F - 140°F) och är skadligt för de flesta vilda djur.</p>
+                <p>Den mest berömda alkaliska sjön i Tanzania är hem för den största uppfödningsplatsen för den mindre flamingorasen med över 75% av rasen som föds på stränderna av Lake Natron.</p>
+                <p>Belägen söder om sjön är Ol Doinyo Lengai, en aktiv vulkan belägen i Gregory Rift. Vulkanen står på 2 960 m med det senaste utbrottet 2006.</p>
+                <p>En resa till Lake Natron ger inte bara spektakulära vyer av sjön utan också möjligheten för klättrare att vandra upp Ol Doinyo Lengai mot en extra kostnad.</p>
+            </div>
+        </div>
+
+        <div class="park-item">
+            <img src="images/baby.jpeg" alt="Arusha National Park" class="park-image">
+            <div class="park-content">
+                <h2>Arusha Nationalpark</h2>
+                <p>Belägen 25 km från staden Arusha är den hem för det näst största berget i Tanzania, Mount Meru och världens största population av giraffer.</p>
+                <p>Arusha National Park är hem för många vilda djurarter inklusive giraffer, bufflar, vårtsvin, zebror, elefanter, leoparder, flodhästar och en mängd apor och fåglar.</p>
+                <p>Parken är också hem för det spektakulära Tululusia-vattenfallet och Fig Tree Arch, ett bågformat träd tillräckligt stort för att elefanter ska passera igenom.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comfort Levels Section -->
+    <section class="comfort-levels-section">
+        <h2>Solen erbjuder fyra nivåer av komfort för alla våra safaris</h2>
+        <div class="comfort-grid">
+            <div class="comfort-card">
+                <img src="images/Campsite.jpg" alt="Budget Safari">
+                <h4>BUDGET</h4>
+                <p>Våra budget-safaris erbjuder våra kunder chansen att sova under stjärnorna. Dessa paket inkluderar campingplatsboende, en personlig kock och campingutrustning.</p>
+            </div>
+            <div class="comfort-card">
+                <img src="images/Standard.jpg" alt="Standard Safari">
+                <h4>STANDARD</h4>
+                <p>Våra standard-safaris ger våra kunder 3-stjärnigt logiboende eller tältboende med möjlighet till tvåbäddsrum eller enkelrum.</p>
+            </div>
+            <div class="comfort-card">
+                <img src="images/Comfort.jpg" alt="Comfort Safari">
+                <h4>KOMFORT</h4>
+                <p>Våra komfort-safaris ger våra kunder en förhöjd komfortnivå och erbjuder logiboende eller duks boende med möjlighet till tvåbäddsrum eller enkelrum.</p>
+            </div>
+            <div class="comfort-card">
+                <img src="images/Beyond.jpg" alt="Luxury Safari">
+                <h4>LYXIG</h4>
+                <p>Våra lyxsafaris erbjuder våra kunder en högre komfortnivå, inklusive möjligheten att flyga till Serengeti National Park från Arusha utöver 5-stjärniga hotell och lyxigt tältboende.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Safari Packages Section -->
+    <section class="packages-section">
+        <h2>Våra Safari-paket</h2>
+        <div class="packages-grid">
+            <div class="package-card">
+                <img src="images/zebras.jpeg" alt="3 Day Safari">
+                <div class="package-card-overlay"></div>
+                <div class="package-card-content">
+                    <h3>3 dagars safari-tur</h3>
+                    <div class="package-card-bottom">
+                        <div class="package-price-info">
+                            <span class="package-price-label">Från</span>
+                            <span class="package-price">SEK12,400</span>
+                            <span class="package-per-person">Per Person</span>
+                        </div>
+                        <a href="3day-safari.html" class="btn">Mer information</a>
+                    </div>
+                </div>
+            </div>
+            <div class="package-card">
+                <img src="images/hipo.jpeg" alt="4 Day Safari">
+                <div class="package-card-overlay"></div>
+                <div class="package-card-content">
+                    <h3>4 dagars safari-tur</h3>
+                    <div class="package-card-bottom">
+                        <div class="package-price-info">
+                            <span class="package-price-label">Från</span>
+                            <span class="package-price">SEK16,300</span>
+                            <span class="package-per-person">Per Person</span>
+                        </div>
+                        <a href="4day-safari.html" class="btn">Mer information</a>
+                    </div>
+                </div>
+            </div>
+            <div class="package-card">
+                <img src="images/simba.jpeg" alt="5 Day Safari">
+                <div class="package-card-overlay"></div>
+                <div class="package-card-content">
+                    <h3>5 dagars safari-tur</h3>
+                    <div class="package-card-bottom">
+                        <div class="package-price-info">
+                            <span class="package-price-label">Från</span>
+                            <span class="package-price">SEK18,000</span>
+                            <span class="package-per-person">Per Person</span>
+                        </div>
+                        <a href="5day-safari.html" class="btn">Mer information</a>
+                    </div>
+                </div>
+            </div>
+            <div class="package-card">
+                <img src="images/lion.jpeg" alt="7 Day Safari">
+                <div class="package-card-overlay"></div>
+                <div class="package-card-content">
+                    <h3>7 dagars safari-tur</h3>
+                    <div class="package-card-bottom">
+                        <div class="package-price-info">
+                            <span class="package-price-label">Från</span>
+                            <span class="package-price">SEK22,200</span>
+                            <span class="package-per-person">Per Person</span>
+                        </div>
+                        <a href="7day-safari.html" class="btn">Mer information</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Safari Section -->
+    <section class="custom-safari-section">
+        <div class="custom-safari-container">
+            <img src="images/tembo.jpeg" alt="Custom Safari" class="custom-safari-image">
+            <div class="custom-safari-content">
+                <h2>Solens Anpassade Safari-paket</h2>
+                <p>Kontakta oss för en anpassad safari-tur skräddarsydd efter dina unika preferenser. Vårt team på Solen är redo att hjälpa dig att planera ett oförglömligt äventyr i Tanzania. Oavsett om du söker nära möten med vilda djur, hisnande landskap eller kulturella upplevelser kan vi skapa den perfekta resplanen för dig. Kontakta oss idag för att diskutera din ideala safari-upplevelse.</p>
+                <button onclick="openCustomSafariForm()" class="btn">Anpassa din safari-tur</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Safari Form Modal -->
+    <div id="customSafariModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Anpassad Safari-tur</h2>
+                <span class="close-modal" onclick="closeCustomSafariForm()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="customSafariForm" onsubmit="handleCustomSafariSubmit(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Förnamn <span class="required">(obligatorisk)</span></label>
+                            <input type="text" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Efternamn <span class="required">(obligatorisk)</span></label>
+                            <input type="text" name="lastName" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Antal personer <span class="required">(obligatorisk)</span></label>
+                        <input type="number" name="people" min="1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>E-post <span class="required">(obligatorisk)</span></label>
+                        <input type="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Bekräfta e-post <span class="required">(obligatorisk)</span></label>
+                        <input type="email" name="confirmEmail" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Boende nivå <span class="required">(obligatorisk)</span></label>
+                        <select name="accommodation" required>
+                            <option value="">Välj ett alternativ</option>
+                            <option value="budget">Budget</option>
+                            <option value="standard">Standard</option>
+                            <option value="comfort">Komfort</option>
+                            <option value="luxury">Lyxig</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Nationalparker <span class="required">(obligatorisk)</span></label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="tarangire" name="parks" value="Tarangire">
+                                <label for="tarangire">Tarangire Nationalpark</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="manyara" name="parks" value="Lake Manyara">
+                                <label for="manyara">Lake Manyara</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="ngorongoro" name="parks" value="Ngorongoro">
+                                <label for="ngorongoro">Ngorongoro-kratern</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="serengeti" name="parks" value="Serengeti">
+                                <label for="serengeti">Serengeti Nationalpark</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="natron" name="parks" value="Lake Natron">
+                                <label for="natron">Lake Natron</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Ytterligare aktiviteter</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="balloon" name="activities" value="Hot Air Balloon">
+                                <label for="balloon">Varmluftsballong</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="masai" name="activities" value="Masai Village">
+                                <label for="masai">Masai bybesök</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Meddelande <span class="required">(obligatorisk)</span></label>
+                        <textarea name="message" rows="4" required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Skicka</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+     <!-- Video Section -->
+    <section class="video-section">
+        <div class="video-container">
+            <video controls autoplay muted loop playsinline>
+                <source src="images/lions.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <img src="images/logo.png" alt="Solen Safaris" class="footer-logo">
+            </div>
+            <div class="footer-links">
+                <a href="/about-us.html">Om Oss</a>
+                <a href="/faq.html">FAQ</a>
+                <a href="/contact.html">Kontakta Oss</a>
+                <a href="/terms.html">Villkor</a>
+            </div>
+        </div>
+        <div class="footer-social">
+    <a href="https://www.instagram.com/yourusername" target="_blank" aria-label="Instagram">
+        <i class="bi bi-instagram"></i>
+    </a>
+
+    <a href="https://web.facebook.com/praygod.fadhili.3" target="_blank" aria-label="Facebook">
+        <i class="bi bi-facebook"></i>
+    </a>
+
+    <a href="https://x.com/yourusername" target="_blank" aria-label="X (Twitter)">
+        <i class="bi bi-twitter-x"></i>
+    </a>
+
+    <a href="https://wa.me/254712345678" target="_blank" aria-label="WhatsApp">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+
+    <a href="mailto:info@yourdomain.com" aria-label="Email">
+        <i class="bi bi-envelope-fill"></i>
+    </a>
+
+   <!-- <a href="https://www.youtube.com/@yourchannel" target="_blank" aria-label="YouTube">
+        <i class="bi bi-youtube"></i>
+    </a>-->
+</div>
+    </footer>
+
+    <!-- Fixed Language Selector
+    <div class="fixed-language-selector">
+        <select id="language-select" onchange="translatePage(this.value)">
+            <option value="sv">🌐 Svenska</option>
+            <option value="en">English</option>
+        </select>
+    </div> -->
+
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("szRI9NE39riHh2l8G");
+        })();
+    </script>
+
+    <script>
+        // Custom Safari Form Modal Functions
+        function openCustomSafariForm() {
+            document.getElementById('customSafariModal').classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCustomSafariForm() {
+            document.getElementById('customSafariModal').classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('customSafariModal');
+            if (event.target === modal) {
+                closeCustomSafariForm();
+            }
+        }
+
+        // Handle form submission
+        function handleCustomSafariSubmit(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const email = form.email.value;
+            const confirmEmail = form.confirmEmail.value;
+            
+            // Validate email match
+            if (email !== confirmEmail) {
+                alert('E-postadresserna matchar inte. Vänligen kontrollera och försök igen.');
+                return false;
+            }
+
+            // Get selected parks
+            const parkCheckboxes = form.querySelectorAll('input[name="parks"]:checked');
+            const parks = Array.from(parkCheckboxes).map(cb => cb.value).join(', ');
+            
+            // Get selected activities
+            const activityCheckboxes = form.querySelectorAll('input[name="activities"]:checked');
+            const activities = Array.from(activityCheckboxes).map(cb => cb.value).join(', ');
+
+            // Prepare template parameters for EmailJS
+            const templateParams = {
+                from_name: form.firstName.value + ' ' + form.lastName.value,
+                people: form.people.value,
+                email: form.email.value,
+                accommodation: form.accommodation.value,
+                parks: parks || 'Inga valda',
+                activities: activities || 'Inga valda',
+                message: form.message.value,
+                tour_type: 'Anpassad Safari-tur'
+            };
+
+            // Send email using EmailJS
+            emailjs.send('service_vopezjp', 'template_9b52kyd', templateParams)
+                .then(function(response) {
+                    alert('Tack! Din förfrågan har skickats. Vi återkommer till dig inom kort.');
+                    form.reset();
+                    closeCustomSafariForm();
+                }, function(error) {
+                    alert('Ett fel uppstod. Vänligen försök igen eller kontakta oss direkt.');
+                    console.error('EmailJS error:', error);
+                });
+
+            return false;
+        }
+
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    const dropdowns = document.querySelectorAll('.dropdown');
+
+    // Toggle mobile menu
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+
+    // Close menu when clicking X (::before pseudo element area)
+    navLinks.addEventListener('click', (e) => {
+        const rect = navLinks.getBoundingClientRect();
+        const closeButtonArea = {
+            left: rect.right - 60,
+            right: rect.right - 20,
+            top: rect.top + 20,
+            bottom: rect.top + 60
+        };
+        
+        if (e.clientX >= closeButtonArea.left && e.clientX <= closeButtonArea.right &&
+            e.clientY >= closeButtonArea.top && e.clientY <= closeButtonArea.bottom) {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+            dropdowns.forEach(dropdown => dropdown.classList.remove('active'));
+        }
+    });
+
+    // Mobile dropdown toggle - prevent redirect and show submenu
+    dropdowns.forEach(dropdown => {
+        const mainLink = dropdown.querySelector('a');
+        
+        mainLink.addEventListener('click', (e) => {
+            // On mobile, prevent redirect and toggle dropdown
+            if (window.innerWidth <= 992) {
+                e.preventDefault();
+                dropdown.classList.toggle('active');
+            }
+        });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+            dropdowns.forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
+        }
+    });
+    
+    // Close menu when clicking dropdown link
+    document.querySelectorAll('.dropdown-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+            dropdowns.forEach(dropdown => dropdown.classList.remove('active'));
+        });
+    });
+    </script>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

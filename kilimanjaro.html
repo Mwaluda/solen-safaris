@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mount Kilimanjaro - Solen Safaris</title>
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="css/kilimanjaro-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Override mobile menu styles to match contact.html */
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 70%;
+                max-width: 350px;
+                height: auto;
+                max-height: 85vh;
+                background: rgba(0,0,0,0.95);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: stretch;
+                padding: 80px 0 30px 0;
+                gap: 0;
+                z-index: 999;
+                overflow-y: auto;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                border-radius: 0 20px 20px 0;
+            }
+            
+            .nav-links.active {
+                display: flex;
+                transform: translateX(0);
+            }
+            
+            .nav-links li {
+                width: 100%;
+                max-width: none;
+                text-align: left;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            
+            .nav-links > li > a {
+                display: block;
+                color: white !important;
+                font-size: 1.1rem;
+                padding: 18px 30px;
+            }
+            
+            .contact-btn {
+                background: #8B7355;
+                border-radius: 50px;
+                padding: 14px 30px;
+                font-size: 1rem;
+                margin: 20px 30px;
+                text-align: center;
+            }
+            
+            .hamburger {
+                display: flex;
+                z-index: 1001;
+            }
+            
+            .hamburger span {
+                transition: all 0.3s ease;
+            }
+            
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(8px, 8px);
+            }
+            
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -7px);
+            }
+            
+            /* Close button X */
+            .nav-links::before {
+                content: '×';
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                font-size: 2.5rem;
+                color: white;
+                cursor: pointer;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            /* Dropdown menu in sidebar */
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                background: rgba(255,255,255,0.05);
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease;
+                border-radius: 0;
+            }
+            
+            .dropdown.active .dropdown-menu {
+                max-height: 500px;
+                padding: 5px 0;
+            }
+            
+            .dropdown-menu a {
+                padding: 12px 30px 12px 50px;
+                font-size: 0.95rem;
+                color: rgba(255,255,255,0.85) !important;
+                border-bottom: 1px solid rgba(255,255,255,0.05);
+                background: transparent;
+            }
+            
+            .dropdown-menu a:hover {
+                background: rgba(255,255,255,0.1);
+                color: white !important;
+            }
+            
+            .dropdown-menu a:last-child {
+                border-bottom: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Solen Safaris">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Hem</a></li>
+                <li class="dropdown">
+                    <a href="/kilimanjaro.html">Mount Kilimanjaro</a>
+                    <div class="dropdown-menu">
+                        <a href="/kilimanjaro.html">Om Mount Kilimanjaro</a>
+                        <a href="/machame-route.html">Machame Rutt</a>
+                        <a href="/marangu-route.html">Marangu Rutt</a>
+                        <a href="/lemosho-route.html">Lemosho Rutt</a>
+                        <a href="/umbwe-route.html">Umbwe Rutt</a>
+                        <a href="/rongai-route.html">Rongai Rutt</a>
+                        <a href="/northern-circuit-route.html">Northern Circuit Rutt</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="/safari.html">Safariturer</a>
+                    <div class="dropdown-menu">
+                        <a href="/safari.html">Om Safariturer</a>
+                        <a href="3day-safari.html">3 Dagars Safari</a>
+                        <a href="4day-safari.html">4 Dagars Safari</a>
+                        <a href="5day-safari.html">5 Dagars Safari</a>
+                        <a href="7day-safari.html">7 Dagars Safari</a>
+                    </div>
+                </li>
+                <li><a href="mount-meru.html">Mount Meru</a></li>
+                <li><a href="contact.html" class="contact-btn">Kontakta Oss</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Erövra Mount Kilimanjaro</h1>
+        </div>
+    </section>
+
+    <!-- Stand on the Roof of Africa -->
+    <section class="intro-section">
+        <div class="container">
+            <h2 class="section-heading">Stå på Afrikas tak</h2>
+            
+            <p class="intro-text">
+                Mount Kilimanjaro, beläget i Tanzania, är Afrikas högsta berg och når en höjd på cirka 5 895 meter (19 341 fot) över havet. Dess bildande går tillbaka cirka 1 miljon år sedan på grund av vulkanisk aktivitet. Kilimanjaro består främst av tre vulkaniska toppar: Kibo, Mawenzi och Shira. Kibo, den högsta toppen, är en utdöd stratovulkan, medan Mawenzi och Shira anses vara kvarlevor från äldre vulkanisk aktivitet.
+            </p>
+
+            <p class="intro-text">
+                Historiskt sett har Kilimanjaro haft stor kulturell betydelse för det lokala Chagga-folket, som har bott på dess sluttningar i århundraden. De betraktar berget som en helig enhet och väver samman sin kultur och andlighet med dess närvaro. Dessutom fungerar det som en viktig resurs som tillhandahåller vatten, bördig mark för jordbruk och material för hantverk.
+            </p>
+
+            <p class="intro-text">
+                Den första registrerade bestigning av Kilimanjaro ägde rum 1889 när Hans Meyer och Ludwig Purtscheller framgångsrikt nådde Uhuru Peak. Deras lyckade expedition markerade början på bergets erkännande som ett klätterdestination för äventyrare och upptäcktsresande. Sedan dess har det blivit populärt bland vandrare på grund av dess tillgänglighet och de olika rutter som finns tillgängliga för bestigning.
+            </p>
+
+            <p class="intro-text">
+                Under 1900-talet blev klättring på Kilimanjaro alltmer kommersialiserad och lockar tusentals klättrare varje år. Denna ökning i popularitet har medfört både ekonomiska fördelar och miljömässiga utmaningar. Bergets känsliga ekosystem möter påfrestningar från avskogning, problem med avfallshantering och klimatförändringar, som har orsakat glaciärtillbakagång på toppen.
+            </p>
+
+            <p class="intro-text">
+                Idag står Mount Kilimanjaro inte bara som ett naturunderverk utan också som en symbol för äventyr. Det fortsätter att locka klättrare från hela världen och ger dem möjlighet att uppleva dess fantastiska biologiska mångfald och hisnande landskap, samtidigt som det främjar en förståelse för behovet av bevarandeinsatser för att bevara dess unika miljö för framtida generationer.
+            </p>
+        </div>
+    </section>
+
+    <!-- Routes Section -->
+    <section class="routes-section">
+        <div class="container">
+            <h2 class="section-heading">Välj din rutt</h2>
+            <p class="section-subtitle">Sex olika vägar till toppen, var och en erbjuder unika upplevelser och utmaningar</p>
+
+            <div class="routes-grid">
+                <!-- Machame Route -->
+                <div class="route-card">
+                    <div class="route-image">
+                        <img src="images/jungle_trek.jpeg" alt="Machame-rutten">
+                        <div class="route-overlay">
+                            <h3>Machame<br>Rutt</h3>
+                            <div class="route-price-section">
+                                <p class="route-price-label">FRÅN</p>
+                                <p class="route-price-amount">SEK 21,800</p>
+                                <p class="route-price-person">Per Person</p>
+                                <button class="route-details-btn" onclick="window.location.href='machame-route.html'">Mer Information</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Marangu Route -->
+                <div class="route-card">
+                    <div class="route-image">
+                        <img src="images/mountain_sunrise.jpeg" alt="Marangu-rutten">
+                        <div class="route-overlay">
+                            <h3>Marangu<br>Rutt</h3>
+                            <div class="route-price-section">
+                                <p class="route-price-label">FRÅN</p>
+                                <p class="route-price-amount">SEK 20,800</p>
+                                <p class="route-price-person">Per Person</p>
+                                <button class="route-details-btn" onclick="window.location.href='marangu-route.html'">Mer Information</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lemosho Route -->
+                <div class="route-card">
+                    <div class="route-image">
+                        <img src="images/kilimanjaro_elephants.jpeg" alt="Lemosho-rutten">
+                        <div class="route-overlay">
+                            <h3>Lemosho<br>Rutt</h3>
+                            <div class="route-price-section">
+                                <p class="route-price-label">FRÅN</p>
+                                <p class="route-price-amount">SEK 24,100</p>
+                                <p class="route-price-person">Per Person</p>
+                                <button class="route-details-btn" onclick="window.location.href='lemosho-route.html'">Mer Information</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Umbwe Route -->
+                <div class="route-card">
+                    <div class="route-image">
+                        <img src="images/colobus_monkey.jpeg" alt="Umbwe-rutten">
+                        <div class="route-overlay">
+                            <h3>Umbwe<br>Rutt</h3>
+                            <div class="route-price-section">
+                                <p class="route-price-label">FRÅN</p>
+                                <p class="route-price-amount">SEK 21,150</p>
+                                <p class="route-price-person">Per Person</p>
+                                <button class="route-details-btn" onclick="window.location.href='umbwe-route.html'">Mer Information</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rongai Route -->
+                <div class="route-card">
+                    <div class="route-image">
+                        <img src="images/safari_breakfast.jpeg" alt="Rongai-rutten">
+                        <div class="route-overlay">
+                            <h3>Rongai<br>Rutt</h3>
+                            <div class="route-price-section">
+                                <p class="route-price-label">FRÅN</p>
+                                <p class="route-price-amount">SEK 24,800</p>
+                                <p class="route-price-person">Per Person</p>
+                                <button class="route-details-btn" onclick="window.location.href='rongai-route.html'">Mer Information</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Northern Circuit Route -->
+                <div class="route-card">
+                    <div class="route-image">
+                        <img src="images/waterfall.jpeg" alt="Northern Circuit-rutten">
+                        <div class="route-overlay">
+                            <h3>Northern Circuit<br>Rutt</h3>
+                            <div class="route-price-section">
+                                <p class="route-price-label">FRÅN</p>
+                                <p class="route-price-amount">SEK 29,300</p>
+                                <p class="route-price-person">Per Person</p>
+                                <button class="route-details-btn" onclick="window.location.href='northern-circuit-route.html'">Mer Information</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top 10 Things Section -->
+    <section class="tips-section">
+        <div class="container">
+            <h2 class="section-heading">Topp 10 saker att veta innan du bestiger Mount Kilimanjaro</h2>
+            
+            <div class="tips-content">
+                <div class="tips-list">
+                    <div class="tip-item">
+                        <h3>Välj rätt rutt</h3>
+                        <p>Mount Kilimanjaro erbjuder flera klättringsrutter, var och en med varierande svårighetsgrad och varaktighet. Undersök rutterna, såsom Machame, Lemosho och Rongai, för att välja en som stämmer överens med din erfarenhet och fysiska förmåga.</p>
+                    </div>
+
+                    <div class="tip-item">
+                        <h3>Förstå höjden</h3>
+                        <p>Kilimanjaro är Afrikas högsta topp och står på 5 895 meter (19 341 fot). Acklimatisering är avgörande för att undvika höjdsjuka. Planera för gradvis uppstigning och överväg att ta acklimatiseringsdagar.</p>
+                    </div>
+
+                    <div class="tip-item">
+                        <h3>Fysisk förberedelse är nyckeln</h3>
+                        <p>Ett bra träningsprogram är avgörande för en framgångsrik klättring. Inkludera kardiovaskulär träning, styrkeövningar och träningsvandringar. Uthållighet kommer att spela en betydande roll för att hantera de långa vandringsdagarna.</p>
+                    </div>
+
+                    <div class="tip-item">
+                        <h3>Packa klokt</h3>
+                        <p>Korrekt utrustning är avgörande för att navigera varierande väderförhållanden. Investera i kvalitetsvandringsskor, lagervis kläder, en bra sovsäck och andra nödvändigheter som pannlampa, vandringsstavar och ett hydreringssystem.</p>
+                    </div>
+
+                    <div class="tip-item">
+                        <h3>Håll dig hydrerad</h3>
+                        <p>Uttorkning kan förvärra effekterna av höjdsjuka. Drick mycket vatten före och under din klättring. Överväg att ta med reningskapslar om du behöver hämta vatten från bäckar.</p>
+                    </div>
+
+                    <div class="tip-item">
+                        <h3>Näring är viktig</h3>
+                        <p>Ge din kropp bränsle med balanserade måltider rika på kolhydrater, proteiner och nyttiga fetter. Snacks som energibars, nötter och torkad frukt rekommenderas också för hållbar energi under vandringen.</p>
+                    </div>
+
+                    <div class="tip-item">
+                        <h3>Lyssna på din kropp</h3>
+                        <p>Var uppmärksam på hur du mår under klättringen. Om du upplever svår huvudvärk, illamående eller extrem trötthet, kommunicera med dina guider. Att gå ner är ofta det bästa botemedlet mot höjdsjuka.</p>
+                    </div>
+
+                    <div class="tip-item">
+                        <h3>Lämna inga spår</h3>
+                        <p>Skydda miljön genom att utöva ansvarsfull vandring. Kassera avfall på rätt sätt, håll dig till leder och respektera djurlivet. Detta hjälper till att bevara Kilimanjaros skönhet för framtida klättrare.</p>
+                    </div>
+
+                    <div class="tip-item">
+                        <h3>Överväg en guide</h3>
+                        <p>Även om det är möjligt att klättra Kilimanjaro självständigt, kan en lokal certifierad guide förbättra din upplevelse. Guider erbjuder värdefull expertis inom navigering, säkerhet och kulturella insikter.</p>
+                    </div>
+
+                    <div class="tip-item">
+                        <h3>Mental beredskap</h3>
+                        <p>Att klättra Mount Kilimanjaro är lika mycket en mental utmaning som en fysisk. Håll dig positiv, sätt uppnåeliga mål och behåll en bra attityd genom hela klättringen för att förbättra din övergripande upplevelse.</p>
+                    </div>
+                </div>
+
+                <div class="tips-image">
+                    <img src="images/tourists_maasai.jpeg" alt="Framgång på toppen">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packing List Section -->
+    <section class="packing-section">
+        <div class="container">
+            <div class="packing-content">
+                <div class="packing-image">
+                    <img src="images/maasai_village.jpeg" alt="Packning för Kilimanjaro">
+                </div>
+                <div class="packing-text">
+                    <h2>Solens föreslagna packningslista</h2>
+                    <p>
+                        Att ha rätt utrustning för att klättra ett berg är avgörande för att säkerställa säkerhet och förbättra den övergripande upplevelsen. Ordentliga skor, såsom robusta vandringskängor, ger nödvändigt stöd och grepp på varierad terräng, medan väderanpassade kläder skyddar mot elementen och håller klättrare varma och torra. Viktig utrustning, inklusive hjälm, sele och klätterrep, kan förhindra olyckor och skador. Dessutom är rätt navigeringsverktyg och första hjälpen-tillbehör avgörande för att svara på oväntade situationer i avlägsna miljöer.
+                    </p>
+                    <p>
+                        Att investera i kvalitetsutrustning bidrar inte bara till en framgångsrik bestigning utan främjar också en känsla av självförtroende och beredskap för klättrare som ger sig ut i utmanande landskap.
+                    </p>
+                   <!-- <button class="download-btn">Ladda ner PDF här</button>-->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <img src="images/logo.png" alt="Solen Safaris" class="footer-logo">
+            <div class="footer-links">
+                <a href="/about-us.html">Om oss</a>
+                <a href="/faq.html">FAQ</a>
+                <a href="/contact.html">Kontakta Oss</a>
+                <a href="/terms.html">Villkor</a>
+            </div>
+        </div>
+        <div class="footer-social">
+            <a href="https://www.instagram.com/yourusername" target="_blank" aria-label="Instagram">
+                <i class="bi bi-instagram"></i>
+            </a>
+            <a href="https://web.facebook.com/praygod.fadhili.3" target="_blank" aria-label="Facebook">
+                <i class="bi bi-facebook"></i>
+            </a>
+            <a href="https://x.com/yourusername" target="_blank" aria-label="X (Twitter)">
+                <i class="bi bi-twitter-x"></i>
+            </a>
+            <a href="https://wa.me/254712345678" target="_blank" aria-label="WhatsApp">
+                <i class="bi bi-whatsapp"></i>
+            </a>
+            <a href="/cdn-cgi/l/email-protection#9bf2f5fdf4dbe2f4eee9fff4f6faf2f5b5f8f4f6" aria-label="Email">
+                <i class="bi bi-envelope-fill"></i>
+            </a>
+        </div>
+    </footer>
+
+    <script src="js/kilimanjaro-script.js"></script>
+</body>
+</html>
