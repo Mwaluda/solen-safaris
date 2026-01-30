@@ -7,6 +7,7 @@
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="css/kilimanjaro-style.css">
+     <link rel="icon" type="image/png" href="images/favicon.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
@@ -138,6 +139,53 @@
                 border-bottom: none;
             }
         }
+
+        /* ===================================
+   FOOTER - Thin & Minimal (matches About Us page)
+   =================================== */
+.footer {
+    background: #070707;
+    color: #ddd;
+    padding: 45px 5vw 30px;
+    /* thin vertical spacing */
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    /* tight but comfortable spacing */
+}
+
+.footer-logo {
+    height: 200px;
+    width: auto;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 28px;
+    /* balanced link spacing */
+}
+
+.footer-links a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 0.96rem;
+    /* slightly smaller & modern */
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
     </style>
 </head>
 <body>
@@ -420,23 +468,34 @@
                 <a href="/terms.html">Villkor</a>
             </div>
         </div>
-        <div class="footer-social">
-            <a href="https://www.instagram.com/yourusername" target="_blank" aria-label="Instagram">
-                <i class="bi bi-instagram"></i>
-            </a>
-            <a href="https://web.facebook.com/praygod.fadhili.3" target="_blank" aria-label="Facebook">
-                <i class="bi bi-facebook"></i>
-            </a>
-            <a href="https://x.com/yourusername" target="_blank" aria-label="X (Twitter)">
-                <i class="bi bi-twitter-x"></i>
-            </a>
-            <a href="https://wa.me/254712345678" target="_blank" aria-label="WhatsApp">
-                <i class="bi bi-whatsapp"></i>
-            </a>
-            <a href="/cdn-cgi/l/email-protection#9bf2f5fdf4dbe2f4eee9fff4f6faf2f5b5f8f4f6" aria-label="Email">
-                <i class="bi bi-envelope-fill"></i>
-            </a>
-        </div>
+<div class="footer-social">
+    <a href="https://www.instagram.com/solensafaris/" target="_blank" aria-label="Instagram">
+        <i class="bi bi-instagram"></i>
+    </a>
+
+    <a href="https://web.facebook.com/profile.php?id=61586848148598" target="_blank" aria-label="Facebook">
+        <i class="bi bi-facebook"></i>
+    </a>
+
+    <a href="https://x.com/yourusername" target="_blank" aria-label="X (Twitter)">
+        <i class="bi bi-twitter-x"></i>
+    </a>
+
+    <a href="https://wa.me/46793540706" target="_blank" aria-label="WhatsApp">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+
+    <a href="mailto:solensafaris@gmail.com" aria-label="Email">
+        <i class="bi bi-envelope-fill"></i>
+    </a>
+
+    <!--
+    <a href="https://www.youtube.com/@yourchannel" target="_blank" aria-label="YouTube">
+        <i class="bi bi-youtube"></i>
+    </a>
+    -->
+</div>
+
     </footer>
 
     <script src="js/kilimanjaro-script.js"></script>

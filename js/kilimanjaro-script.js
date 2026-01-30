@@ -82,6 +82,105 @@ window.addEventListener('scroll', () => {
 });
 
 // ===================================
+// ACCORDION FUNCTIONALITY (MISSING FUNCTION)
+// ===================================
+function toggleAccordion(header) {
+    const accordionItem = header.parentElement;
+    const content = header.nextElementSibling;
+    const icon = header.querySelector('.accordion-icon');
+    
+    // Close all other accordions
+    document.querySelectorAll('.accordion-item').forEach(item => {
+        if (item !== accordionItem) {
+            item.classList.remove('active');
+            const otherContent = item.querySelector('.accordion-content');
+            const otherIcon = item.querySelector('.accordion-icon');
+            if (otherContent) otherContent.style.maxHeight = null;
+            if (otherIcon) otherIcon.textContent = '+';
+        }
+    });
+    
+    // Toggle current accordion
+    accordionItem.classList.toggle('active');
+    
+    if (accordionItem.classList.contains('active')) {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        icon.textContent = '−';
+    } else {
+        content.style.maxHeight = null;
+        icon.textContent = '+';
+    }
+}
+
+// ===================================
+// BOOKING FORM FUNCTIONS (MISSING FUNCTIONS)
+// ===================================
+function openBookingForm() {
+    const modal = document.getElementById('bookingModal');
+    if (modal) {
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+}
+
+function closeBookingForm() {
+    const modal = document.getElementById('bookingModal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Restore scrolling
+    }
+}
+
+// Close modal when clicking outside
+window.addEventListener('click', (e) => {
+    const modal = document.getElementById('bookingModal');
+    if (e.target === modal) {
+        closeBookingForm();
+    }
+});
+
+// Handle form submission
+function handleBookingSubmit(event) {
+    event.preventDefault();
+    
+    const form = event.target;
+    const formData = new FormData(form);
+    
+    // Validate email confirmation
+    const email = formData.get('email');
+    const confirmEmail = formData.get('confirmEmail');
+    
+    if (email !== confirmEmail) {
+        alert('E-postadresserna matchar inte. Vänligen kontrollera och försök igen.');
+        return;
+    }
+    
+    // Prepare email parameters
+    const templateParams = {
+        route_name: document.querySelector('.route-detail-hero h1').textContent,
+        days: formData.get('days'),
+        people: formData.get('people'),
+        first_name: formData.get('firstName'),
+        last_name: formData.get('lastName'),
+        email: email,
+        preferred_date: formData.get('date') || 'Ej angivet',
+        message: formData.get('message')
+    };
+    
+    // Send email using EmailJS
+    emailjs.send('service_1oybpwb', 'template_dgmwmsd', templateParams)
+        .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            alert('Tack! Din förfrågan har skickats. Vi återkommer till dig inom 24 timmar.');
+            form.reset();
+            closeBookingForm();
+        }, function(error) {
+            console.log('FAILED...', error);
+            alert('Något gick fel. Vänligen försök igen eller kontakta oss direkt via e-post.');
+        });
+}
+
+// ===================================
 // ROUTE DETAILS FUNCTION
 // ===================================
 function showRouteDetails(routeName) {

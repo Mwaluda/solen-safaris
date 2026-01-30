@@ -1,321 +1,304 @@
 // ===================================
-// NAVBAR FUNCTIONALITY (from contact.html)
+// ULTRA-SIMPLE MOBILE-SAFE VERSION
+// Zero conflicts, maximum compatibility
 // ===================================
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
-const dropdowns = document.querySelectorAll('.dropdown');
 
-// Toggle mobile menu
-if (hamburger) {
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navLinks.classList.toggle('active');
-    });
-}
+// Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 Script loaded');
 
-// Close menu when clicking X (::before pseudo element area)
-if (navLinks) {
-    navLinks.addEventListener('click', (e) => {
-        const rect = navLinks.getBoundingClientRect();
-        const closeButtonArea = {
-            left: rect.right - 60,
-            right: rect.right - 20,
-            top: rect.top + 20,
-            bottom: rect.top + 60
-        };
-        
-        if (e.clientX >= closeButtonArea.left && e.clientX <= closeButtonArea.right &&
-            e.clientY >= closeButtonArea.top && e.clientY <= closeButtonArea.bottom) {
-            hamburger.classList.remove('active');
-            navLinks.classList.remove('active');
-            dropdowns.forEach(dropdown => dropdown.classList.remove('active'));
-        }
-    });
-}
+    // ===================================
+    // NAVBAR FUNCTIONALITY
+    // ===================================
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    const dropdowns = document.querySelectorAll('.dropdown');
 
-// Mobile dropdown toggle - prevent redirect and show submenu
-dropdowns.forEach(dropdown => {
-    const mainLink = dropdown.querySelector('a');
-    
-    mainLink.addEventListener('click', (e) => {
-        // On mobile, prevent redirect and toggle dropdown
-        if (window.innerWidth <= 992) {
+    if (hamburger && navLinks) {
+        // Toggle mobile menu
+        hamburger.addEventListener('click', function(e) {
             e.preventDefault();
-            dropdown.classList.toggle('active');
-        }
-    });
-});
+            e.stopPropagation();
+            console.log('🍔 Hamburger clicked');
+            
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
 
-// Close menu when clicking outside
-document.addEventListener('click', (e) => {
-    if (hamburger && navLinks && !hamburger.contains(e.target) && !navLinks.contains(e.target)) {
-        hamburger.classList.remove('active');
-        navLinks.classList.remove('active');
-        dropdowns.forEach(dropdown => {
-            dropdown.classList.remove('active');
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                dropdowns.forEach(d => d.classList.remove('active'));
+            }
         });
     }
-});
 
-// Close menu when clicking dropdown link
-document.querySelectorAll('.dropdown-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-        if (hamburger && navLinks) {
-            hamburger.classList.remove('active');
-            navLinks.classList.remove('active');
-            dropdowns.forEach(dropdown => dropdown.classList.remove('active'));
-        }
-    });
-});
-
-// ===================================
-// ACCORDION FUNCTIONALITY
-// ===================================
-function toggleAccordion(header) {
-    console.log('Accordion clicked!'); // Debug log
-    const item = header.parentElement;
-    const wasActive = item.classList.contains('active');
-    
-    // Close all accordion items
-    document.querySelectorAll('.accordion-item').forEach(accItem => {
-        accItem.classList.remove('active');
-    });
-    
-    // Open clicked item if it wasn't active
-    if (!wasActive) {
-        item.classList.add('active');
-        console.log('Accordion opened'); // Debug log
-    } else {
-        console.log('Accordion closed'); // Debug log
-    }
-}
-
-// ===================================
-// BOOKING MODAL FUNCTIONALITY
-// ===================================
-function openBookingForm() {
-    console.log('Opening booking form...'); // Debug log
-    const modal = document.getElementById('bookingModal');
-    if (modal) {
-        modal.classList.add('show');
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-        
-        // Force the transition
-        setTimeout(() => {
-            modal.style.opacity = '1';
-        }, 10);
-        
-        console.log('Booking form opened'); // Debug log
-    } else {
-        console.error('Modal not found!'); // Debug log
-    }
-}
-
-function closeBookingForm() {
-    console.log('Closing booking form...'); // Debug log
-    const modal = document.getElementById('bookingModal');
-    if (modal) {
-        modal.style.opacity = '0';
-        setTimeout(() => {
-            modal.style.display = 'none';
-            modal.classList.remove('show');
-            document.body.style.overflow = '';
-        }, 300);
-        console.log('Booking form closed'); // Debug log
-    }
-}
-
-// Close modal when clicking outside
-window.onclick = function(event) {
-    const modal = document.getElementById('bookingModal');
-    if (event.target === modal) {
-        closeBookingForm();
-    }
-}
-
-// Close modal with Escape key
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        const modal = document.getElementById('bookingModal');
-        if (modal && modal.classList.contains('show')) {
-            closeBookingForm();
-        }
-    }
-});
-
-// ===================================
-// FORM SUBMISSION WITH EMAILJS
-// ===================================
-function handleBookingSubmit(event) {
-    event.preventDefault();
-    console.log('Form submitted'); // Debug log
-    
-    const form = event.target;
-    const formData = new FormData(form);
-    
-    // Validate email confirmation
-    const email = formData.get('email');
-    const confirmEmail = formData.get('confirmEmail');
-    
-    if (email !== confirmEmail) {
-        alert('E-postadresserna matchar inte. Vänligen kontrollera och försök igen.');
-        return;
-    }
-    
-    // Get route name from modal heading or default to page title
-    const modalHeading = document.querySelector('.modal-content h2');
-    const routeName = modalHeading ? modalHeading.textContent : 'Kilimanjaro Route';
-    
-    // Prepare template parameters for EmailJS
-    const templateParams = {
-        route_name: routeName,
-        days: formData.get('days') || 'Inte specificerat',
-        people: formData.get('people'),
-        first_name: formData.get('firstName'),
-        last_name: formData.get('lastName'),
-        email: formData.get('email'),
-        preferred_date: formData.get('date') || 'Inte specificerat',
-        message: formData.get('message')
-    };
-    
-    console.log('Booking data:', templateParams); // Debug log
-    
-    // Show loading state
-    const submitBtn = form.querySelector('.submit-btn');
-    const originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Skickar...';
-    submitBtn.disabled = true;
-    
-    // Send email using EmailJS
-    emailjs.send('service_lgxxjl5', 'template_cntt96k', templateParams)
-        .then(function(response) {
-            console.log('SUCCESS!', response.status, response.text);
-            alert('Tack! Din bokningsförfrågan har skickats. Vi återkommer till dig snart.');
-            form.reset();
-            closeBookingForm();
-        }, function(error) {
-            console.log('FAILED...', error);
-            alert('Något gick fel. Vänligen försök igen eller kontakta oss direkt.');
-        })
-        .finally(function() {
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-        });
-}
-
-// ===================================
-// SMOOTH SCROLL FOR NAVIGATION
-// ===================================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        
-        // Skip if href is just "#" or invalid
-        if (!href || href === '#' || href.length <= 1) {
-            return;
-        }
-        
-        e.preventDefault();
-        const target = document.querySelector(href);
-        if (target) {
-            const offset = 90;
-            const targetPosition = target.offsetTop - offset;
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
+    // Mobile dropdown toggle
+    dropdowns.forEach(function(dropdown) {
+        const mainLink = dropdown.querySelector('a');
+        if (mainLink) {
+            mainLink.addEventListener('click', function(e) {
+                if (window.innerWidth <= 992) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    dropdown.classList.toggle('active');
+                }
             });
         }
     });
-});
 
-// ===================================
-// NAVBAR SCROLL BEHAVIOR
-// ===================================
-let lastScroll = 0;
-const navbar = document.querySelector('.navbar');
-
-if (navbar) {
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-        
-        // Add scrolled class for styling
-        if (currentScroll > 100) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-        
-        // Hide/show navbar based on scroll direction
-        if (currentScroll > lastScroll && currentScroll > 100) {
-            // Scrolling down
-            navbar.style.transform = 'translateY(-100%)';
-        } else {
-            // Scrolling up
-            navbar.style.transform = 'translateY(0)';
-        }
-        
-        lastScroll = currentScroll;
+    // Close menu when clicking dropdown link
+    document.querySelectorAll('.dropdown-menu a').forEach(function(link) {
+        link.addEventListener('click', function() {
+            if (hamburger && navLinks) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                dropdowns.forEach(d => d.classList.remove('active'));
+            }
+        });
     });
-}
+
+    // ===================================
+    // ACCORDION FUNCTIONALITY
+    // ===================================
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+    console.log('📋 Found accordion headers:', accordionHeaders.length);
+
+    accordionHeaders.forEach(function(header) {
+        // Use both click and touchend for maximum mobile compatibility
+        header.addEventListener('click', handleAccordionClick);
+        header.addEventListener('touchend', handleAccordionClick);
+    });
+
+    function handleAccordionClick(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('✅ Accordion clicked!');
+        
+        const item = this.parentElement;
+        const wasActive = item.classList.contains('active');
+        
+        // Close all accordion items
+        document.querySelectorAll('.accordion-item').forEach(function(accItem) {
+            accItem.classList.remove('active');
+        });
+        
+        // Open clicked item if it wasn't active
+        if (!wasActive) {
+            item.classList.add('active');
+            console.log('📂 Accordion opened');
+        } else {
+            console.log('📁 Accordion closed');
+        }
+    }
+
+    // ===================================
+    // BOOKING MODAL FUNCTIONALITY
+    // ===================================
+    const modal = document.getElementById('bookingModal');
+    const bookingBtns = document.querySelectorAll('.book-climb-btn');
+    const closeBtn = document.querySelector('.close-modal');
+    const bookingForm = document.getElementById('bookingForm');
+
+    console.log('🎫 Modal found:', !!modal);
+    console.log('🔘 Booking buttons found:', bookingBtns.length);
+
+    // Open modal function
+    function openModal() {
+        console.log('🔓 Opening modal...');
+        if (modal) {
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            console.log('✅ Modal opened');
+        }
+    }
+
+    // Close modal function
+    function closeModal() {
+        console.log('🔒 Closing modal...');
+        if (modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+            console.log('✅ Modal closed');
+        }
+    }
+
+    // Attach click handlers to all booking buttons
+    bookingBtns.forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('🎫 Booking button clicked');
+            openModal();
+        });
+        
+        // Also add touchend for mobile
+        btn.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('📱 Booking button touched');
+            openModal();
+        });
+    });
+
+    // Close button
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            closeModal();
+        });
+    }
+
+    // Close when clicking outside modal content
+    if (modal) {
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    }
+
+    // Close with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal && modal.style.display === 'flex') {
+            closeModal();
+        }
+    });
+
+    // ===================================
+    // FORM SUBMISSION WITH EMAILJS
+    // ===================================
+    if (bookingForm) {
+        bookingForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            console.log('📧 Form submitted');
+            
+            const formData = new FormData(bookingForm);
+            
+            // Validate email confirmation
+            const email = formData.get('email');
+            const confirmEmail = formData.get('confirmEmail');
+            
+            if (email !== confirmEmail) {
+                alert('E-postadresserna matchar inte. Vänligen kontrollera och försök igen.');
+                return;
+            }
+            
+            // Get route name
+            const modalHeading = document.querySelector('.modal-content h2');
+            const routeName = modalHeading ? modalHeading.textContent : 'Kilimanjaro Route';
+            
+            // Prepare template parameters
+            const templateParams = {
+                route_name: routeName,
+                days: formData.get('days') || 'Inte specificerat',
+                people: formData.get('people'),
+                first_name: formData.get('firstName'),
+                last_name: formData.get('lastName'),
+                email: formData.get('email'),
+                preferred_date: formData.get('date') || 'Inte specificerat',
+                message: formData.get('message')
+            };
+            
+            console.log('📦 Sending data:', templateParams);
+            
+            // Show loading state
+            const submitBtn = bookingForm.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Skickar...';
+            submitBtn.disabled = true;
+            
+            // Check if emailjs is available
+            if (typeof emailjs === 'undefined') {
+                console.error('❌ EmailJS not loaded!');
+                alert('Ett tekniskt fel inträffade. Vänligen kontakta oss direkt.');
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                return;
+            }
+            
+            // Send email using EmailJS
+            emailjs.send('service_lgxxjl5', 'template_cntt96k', templateParams)
+                .then(function(response) {
+                    console.log('✅ SUCCESS!', response.status);
+                    alert('Tack! Din bokningsförfrågan har skickats. Vi återkommer till dig snart.');
+                    bookingForm.reset();
+                    closeModal();
+                })
+                .catch(function(error) {
+                    console.error('❌ FAILED:', error);
+                    alert('Något gick fel. Vänligen försök igen eller kontakta oss direkt.');
+                })
+                .finally(function() {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                });
+        });
+    }
+
+    // ===================================
+    // NAVBAR SCROLL BEHAVIOR
+    // ===================================
+    let lastScroll = 0;
+    const navbar = document.querySelector('.navbar');
+
+    if (navbar) {
+        window.addEventListener('scroll', function() {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                navbar.style.transform = 'translateY(-100%)';
+            } else {
+                navbar.style.transform = 'translateY(0)';
+            }
+            
+            lastScroll = currentScroll;
+        });
+    }
+
+    // ===================================
+    // SMOOTH SCROLL FOR NAVIGATION
+    // ===================================
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            
+            if (!href || href === '#' || href.length <= 1) {
+                return;
+            }
+            
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+                const offset = 90;
+                const targetPosition = target.offsetTop - offset;
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    console.log('✅ All scripts initialized');
+});
 
 // ===================================
 // PAGE LOAD ANIMATION
 // ===================================
-window.addEventListener('load', () => {
+window.addEventListener('load', function() {
     document.body.style.opacity = '1';
-    console.log('Page loaded'); // Debug log
+    console.log('🎨 Page fully loaded');
 });
 
 document.body.style.opacity = '0';
 document.body.style.transition = 'opacity 0.3s ease';
-
-// ===================================
-// LANGUAGE SELECTOR FUNCTION
-// ===================================
-function translatePage(languageCode) {
-    if (!languageCode || languageCode === 'sv') {
-        localStorage.removeItem('selectedLanguage');
-        if (window.location.search.includes('lang=')) {
-            window.location.href = window.location.pathname;
-        }
-        return;
-    }
-    
-    localStorage.setItem('selectedLanguage', languageCode);
-    
-    const currentUrl = window.location.origin + window.location.pathname;
-    const translateUrl = `https://translate.google.com/translate?sl=sv&tl=${languageCode}&u=${encodeURIComponent(currentUrl)}`;
-    window.location.href = translateUrl;
-}
-
-// ===================================
-// INITIALIZATION
-// ===================================
-window.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM loaded'); // Debug log
-    
-    // Set saved language
-    const savedLanguage = localStorage.getItem('selectedLanguage');
-    const languageSelect = document.getElementById('language-select');
-    
-    if (languageSelect && savedLanguage) {
-        languageSelect.value = savedLanguage;
-    }
-    
-    // Check if modal exists
-    const modal = document.getElementById('bookingModal');
-    if (modal) {
-        console.log('Booking modal found'); // Debug log
-    } else {
-        console.log('Booking modal NOT found - this is OK if not on a route detail page'); // Debug log
-    }
-    
-    // Check if accordion exists
-    const accordion = document.querySelector('.accordion');
-    if (accordion) {
-        console.log('Accordion found'); // Debug log
-    } else {
-        console.log('Accordion NOT found - this is OK if not on a route detail page'); // Debug log
-    }
-});
