@@ -325,7 +325,7 @@ ul { list-style: none; }
     font-size: clamp(3rem, 6vw, 5rem);
     font-weight: 400;
     margin-bottom: 20px;
-    text-transform: lowercase;
+    
     letter-spacing: 2px;
 }
 
@@ -596,7 +596,7 @@ ul { list-style: none; }
 }
 
 .footer-logo {
-    height: 200px;
+    height: 100px;
     width: auto;
 }
 
