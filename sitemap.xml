@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Home Page -->
+  <url>
+    <loc>https://www.solensafaris.se/</loc>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Kilimanjaro Pages -->
+  <url>
+    <loc>https://www.solensafaris.se/kilimanjaro</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.solensafaris.se/machame-route</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.solensafaris.se/marangu-route</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.solensafaris.se/lemosho-route</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.solensafaris.se/umbwe-route</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.solensafaris.se/rongai-route</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.solensafaris.se/northern-circuit-route</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Safari Pages -->
+  <url>
+    <loc>https://www.solensafaris.se/safari</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.solensafaris.se/3day-safari</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.solensafaris.se/4day-safari</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.solensafaris.se/5day-safari</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.solensafaris.se/7day-safari</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Mount Meru -->
+  <url>
+    <loc>https://www.solensafaris.se/mount-meru</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Contact & About -->
+  <url>
+    <loc>https://www.solensafaris.se/contact</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.solensafaris.se/about-us</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.solensafaris.se/faq</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.solensafaris.se/terms</loc>
+    <priority>0.6</priority>
+  </url>
+
+</urlset>
